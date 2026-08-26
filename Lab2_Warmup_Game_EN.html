@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab 2 Warm-Up: Help the AI Robot Build</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; min-height: 100vh;
+    background: #0D0D0D;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+</style>
+</head>
+<body>
+<div id="wgame-root"></div>
+<style>
+  #wgame-root {
+    --ink: #0D0D0D;
+    --card: #1A1013;
+    --pink: #FF2D78;
+    --pink2: #FF6FA8;
+    --pink3: #FFA8C9;
+    --pale: #FFEAF1;
+    --good: #22C55E;
+    --bad: #EF4444;
+    --muted: #B8AEB2;
+    font-family: Georgia, Cambria, "Times New Roman", serif;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    overflow: hidden;
+    position: relative;
+    min-height: 560px;
+  }
+  #wgame-root * { box-sizing: border-box; }
+  #wgame-root .wg-decor {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--pink), var(--card) 75%);
+    opacity: 0.5; pointer-events: none; filter: blur(2px);
+  }
+  #wgame-root .wg-decor.a { width: 260px; height: 260px; top: -110px; right: -80px; }
+  #wgame-root .wg-decor.b { width: 180px; height: 180px; bottom: -90px; left: -60px; opacity: 0.35; }
+
+  #wgame-root .wg-inner {
+    position: relative; z-index: 2;
+    padding: 40px 48px 36px;
+    display: flex; flex-direction: column; min-height: 560px;
+  }
+
+  #wgame-root .wg-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; font-family: Calibri, Arial, sans-serif;
+  }
+  #wgame-root .wg-eyebrow {
+    font-size: 12px; letter-spacing: 3px; font-weight: 700; color: var(--pink2);
+    text-transform: uppercase;
+  }
+  #wgame-root .wg-score {
+    font-size: 14px; font-weight: 700; color: var(--pink3);
+    background: rgba(255,45,120,0.12); padding: 6px 14px; border-radius: 20px;
+    border: 1px solid rgba(255,111,168,0.3);
+  }
+
+  #wgame-root .wg-dots { display: flex; gap: 8px; margin-bottom: 26px; }
+  #wgame-root .wg-dot {
+    width: 34px; height: 6px; border-radius: 4px; background: #33272C;
+    transition: background 0.3s;
+  }
+  #wgame-root .wg-dot.done { background: var(--pink2); }
+  #wgame-root .wg-dot.current { background: var(--pink); }
+
+  #wgame-root .wg-screen { flex: 1; display: none; flex-direction: column; }
+  #wgame-root .wg-screen.active { display: flex; }
+
+  /* START SCREEN */
+  #wgame-root #wg-start { align-items: flex-start; justify-content: center; text-align: left; }
+  #wgame-root #wg-start h1 {
+    font-size: 40px; margin: 0 0 14px; line-height: 1.15; font-weight: 700;
+  }
+  #wgame-root #wg-start p.sub {
+    font-family: Calibri, Arial, sans-serif; font-size: 16px; color: var(--muted);
+    max-width: 520px; line-height: 1.5; margin: 0 0 30px;
+  }
+  #wgame-root .wg-badges { display: flex; gap: 10px; margin-bottom: 34px; flex-wrap: wrap; }
+  #wgame-root .wg-badge {
+    font-family: Calibri, Arial, sans-serif; font-size: 13px; color: var(--pink3);
+    border: 1px solid rgba(255,168,201,0.35); padding: 6px 14px; border-radius: 20px;
+  }
+
+  /* QUESTION SCREEN */
+  #wgame-root .wg-qtext {
+    font-size: 26px; font-weight: 700; line-height: 1.35; margin: 0 0 22px;
+  }
+  #wgame-root .wg-visual { margin-bottom: 22px; display: flex; justify-content: center; }
+  #wgame-root .wg-code {
+    font-family: "Courier New", monospace; font-size: 18px; background: #14161A;
+    color: #E8F0EF; padding: 16px 20px; border-radius: 10px; margin-bottom: 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  #wgame-root .wg-options {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: auto;
+  }
+  #wgame-root .wg-opt {
+    font-family: Calibri, Arial, sans-serif; font-size: 18px; font-weight: 600;
+    background: #241017; border: 2px solid rgba(255,111,168,0.25); color: #fff;
+    padding: 16px 18px; border-radius: 12px; cursor: pointer; text-align: left;
+    transition: transform 0.12s, border-color 0.15s, background 0.15s;
+  }
+  #wgame-root .wg-opt:hover:not(.locked) { border-color: var(--pink); transform: translateY(-2px); }
+  #wgame-root .wg-opt.correct { background: rgba(34,197,94,0.18); border-color: var(--good); }
+  #wgame-root .wg-opt.wrong { background: rgba(239,68,68,0.18); border-color: var(--bad); }
+  #wgame-root .wg-opt.locked { cursor: default; opacity: 0.55; }
+  #wgame-root .wg-opt.locked.correct, #wgame-root .wg-opt.locked.wrong { opacity: 1; }
+
+  #wgame-root .wg-feedback {
+    font-family: Calibri, Arial, sans-serif; font-size: 15px; margin-top: 16px;
+    min-height: 24px; color: var(--pink3);
+  }
+
+  #wgame-root .wg-nextrow { display: flex; justify-content: flex-end; margin-top: 18px; }
+
+  #wgame-root .wg-btn {
+    font-family: Calibri, Arial, sans-serif; font-weight: 700; font-size: 16px;
+    background: var(--pink); color: #fff; border: none; padding: 14px 30px;
+    border-radius: 30px; cursor: pointer; transition: background 0.15s, transform 0.12s;
+  }
+  #wgame-root .wg-btn:hover { background: #E01F68; transform: translateY(-1px); }
+  #wgame-root .wg-btn.ghost {
+    background: transparent; color: var(--pink3); border: 2px solid rgba(255,168,201,0.4);
+  }
+  #wgame-root .wg-btn.ghost:hover { background: rgba(255,111,168,0.1); }
+  #wgame-root .wg-btn[disabled] { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  /* END SCREEN */
+  #wgame-root #wg-end { align-items: center; justify-content: center; text-align: center; }
+  #wgame-root #wg-end .wg-scorebig {
+    font-size: 64px; font-weight: 700; color: var(--pink); margin: 6px 0 4px;
+  }
+  #wgame-root #wg-end .wg-scoreline {
+    font-family: Calibri, Arial, sans-serif; color: var(--muted); font-size: 15px; margin-bottom: 22px;
+  }
+  #wgame-root #wg-end h2 { font-size: 28px; margin: 0 0 10px; }
+  #wgame-root #wg-end p {
+    font-family: Calibri, Arial, sans-serif; color: var(--muted); font-size: 15px;
+    max-width: 420px; line-height: 1.5; margin: 0 0 28px;
+  }
+
+  @media (max-width: 640px) {
+    #wgame-root .wg-inner { padding: 28px 22px 24px; }
+    #wgame-root #wg-start h1 { font-size: 28px; }
+    #wgame-root .wg-qtext { font-size: 21px; }
+    #wgame-root .wg-options { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+(function () {
+  const root = document.getElementById('wgame-root');
+
+  const QUESTIONS = [
+    {
+      q: "An AI robot's radar just detected a signal. Roughly where is it on the grid?",
+      visual: () => gridSVG(200, 100),
+      options: ["(200, 100)", "(400, 300)", "(0, 0)", "(100, 200)"],
+      correct: 0,
+      explain: "Counting from the top-left corner (0,0): 200 right, 100 down. That's how the robot's radar reads position."
+    },
+    {
+      q: "You're programming the robot's movement. If its y value increases, which way does it move?",
+      options: ["Further down", "Further up", "Further left", "Further right"],
+      correct: 0,
+      explain: "In the robot's world (and p5.js), y increases going DOWN — the opposite of a math class graph."
+    },
+    {
+      q: "This is the blueprint code for the robot's hangar. What shape does it build?",
+      code: "rect(50, 50, 100, 60);",
+      options: ["A rectangle", "An ellipse", "A triangle", "A line"],
+      correct: 0,
+      explain: "rect(x, y, w, h) builds a rectangle starting from its top-left corner."
+    },
+    {
+      q: "The robot's shield generator draws this ellipse. Roughly where is its center?",
+      code: "ellipse(200, 150, 80, 80);",
+      options: ["(200, 150)", "(500, 400)", "(0, 0)", "(400, 300)"],
+      correct: 0,
+      explain: "ellipse(x, y, w, h) is centered exactly at (x, y) — unlike rect, which starts from a corner."
+    },
+    {
+      q: "The robot is building a space base. Which variable moves the whole base to the right?",
+      options: ["baseX", "baseY", "baseWidth", "baseHeight"],
+      correct: 0,
+      explain: "X controls left/right position — increase baseX to shift the whole base to the right."
+    },
+    {
+      q: "The robot needs to draw a triangular spaceship wing. How many coordinate points does triangle() need?",
+      options: ["3", "2", "4", "1"],
+      correct: 0,
+      explain: "A triangle has 3 corners, so triangle() needs 3 coordinate pairs — 6 numbers total."
+    }
+  ];
+
+  function gridSVG(dotX, dotY) {
+    const w = 400, h = 260;
+    let lines = "";
+    for (let x = 0; x <= w; x += 100) {
+      lines += `<line x1="${x}" y1="0" x2="${x}" y2="${h}" stroke="#33272C" stroke-width="1"/>`;
+    }
+    for (let y = 0; y <= h; y += 100) {
+      lines += `<line x1="0" y1="${y}" x2="${w}" y2="${y}" stroke="#33272C" stroke-width="1"/>`;
+    }
+    return `
+      <svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="background:#14161A;border-radius:10px;border:1px solid rgba(255,255,255,0.08)">
+        ${lines}
+        <line x1="0" y1="0" x2="${w}" y2="0" stroke="#FF6FA8" stroke-width="2"/>
+        <line x1="0" y1="0" x2="0" y2="${h}" stroke="#FF6FA8" stroke-width="2"/>
+        <circle cx="4" cy="4" r="5" fill="#FF6FA8"/>
+        <text x="10" y="18" fill="#FFA8C9" font-family="Courier New" font-size="14" font-weight="bold">(0,0)</text>
+        <text x="${w - 46}" y="18" fill="#fff" font-family="Calibri" font-size="14">x &#8594;</text>
+        <text x="10" y="${h - 8}" fill="#fff" font-family="Calibri" font-size="14">y &#8595;</text>
+        <circle cx="${dotX}" cy="${dotY}" r="7" fill="#FF2D78"/>
+      </svg>`;
+  }
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  root.innerHTML = `
+    <div class="wg-decor a"></div>
+    <div class="wg-decor b"></div>
+    <div class="wg-inner">
+
+      <div id="wg-start" class="wg-screen active">
+        <div class="wg-eyebrow">Lab 2 &middot; AI Robot Warm-Up</div>
+        <h1>Help the AI Robot Get Ready to Build</h1>
+        <p class="sub">Before the robot can build a house and a car, it needs to know its coordinates and shapes. 6 quick questions — then straight into today's variables lesson.</p>
+        <div class="wg-badges">
+          <div class="wg-badge">6 questions</div>
+          <div class="wg-badge">~3&ndash;5 minutes</div>
+          <div class="wg-badge">Whole class together</div>
+        </div>
+        <button class="wg-btn" id="wg-start-btn">Start &rarr;</button>
+      </div>
+
+      <div id="wg-play" class="wg-screen">
+        <div class="wg-topbar">
+          <div class="wg-eyebrow">Question <span id="wg-qnum">1</span> / ${QUESTIONS.length}</div>
+          <div class="wg-score">Score <span id="wg-scoretop">0</span> / ${QUESTIONS.length}</div>
+        </div>
+        <div class="wg-dots" id="wg-dots"></div>
+        <div class="wg-qtext" id="wg-qtext"></div>
+        <div class="wg-visual" id="wg-visual"></div>
+        <div id="wg-codewrap"></div>
+        <div class="wg-options" id="wg-options"></div>
+        <div class="wg-feedback" id="wg-feedback"></div>
+        <div class="wg-nextrow">
+          <button class="wg-btn" id="wg-next-btn" disabled>Next &rarr;</button>
+        </div>
+      </div>
+
+      <div id="wg-end" class="wg-screen">
+        <div class="wg-eyebrow">Done!</div>
+        <div class="wg-scorebig" id="wg-finalscore">0/${QUESTIONS.length}</div>
+        <div class="wg-scoreline" id="wg-finalmsg-line">correct answers</div>
+        <h2 id="wg-finalmsg">Nice work!</h2>
+        <p id="wg-finalsub">The robot is ready to build — now let's move into today's lesson: using variables to control the position and size of the house and car.</p>
+        <button class="wg-btn ghost" id="wg-restart-btn">Play Again</button>
+      </div>
+
+    </div>
+  `;
+
+  const dotsEl = root.querySelector('#wg-dots');
+  QUESTIONS.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'wg-dot';
+    dotsEl.appendChild(d);
+  });
+
+  function showScreen(id) {
+    root.querySelectorAll('.wg-screen').forEach(s => s.classList.remove('active'));
+    root.querySelector('#' + id).classList.add('active');
+  }
+
+  function renderQuestion() {
+    answered = false;
+    const item = QUESTIONS[current];
+    root.querySelector('#wg-qnum').textContent = current + 1;
+    root.querySelector('#wg-qtext').textContent = item.q;
+
+    const visualEl = root.querySelector('#wg-visual');
+    visualEl.innerHTML = item.visual ? item.visual() : '';
+
+    const codeWrap = root.querySelector('#wg-codewrap');
+    codeWrap.innerHTML = item.code ? `<div class="wg-code">${item.code}</div>` : '';
+
+    const optsEl = root.querySelector('#wg-options');
+    optsEl.innerHTML = '';
+    item.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'wg-opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => selectAnswer(idx, btn));
+      optsEl.appendChild(btn);
+    });
+
+    root.querySelector('#wg-feedback').textContent = '';
+    root.querySelector('#wg-next-btn').disabled = true;
+
+    const dots = dotsEl.querySelectorAll('.wg-dot');
+    dots.forEach((d, i) => {
+      d.classList.remove('current', 'done');
+      if (i < current) d.classList.add('done');
+      if (i === current) d.classList.add('current');
+    });
+  }
+
+  function selectAnswer(idx, btnEl) {
+    if (answered) return;
+    answered = true;
+    const item = QUESTIONS[current];
+    const allBtns = root.querySelectorAll('.wg-opt');
+    allBtns.forEach((b, i) => {
+      b.classList.add('locked');
+      if (i === item.correct) b.classList.add('correct');
+      else if (i === idx) b.classList.add('wrong');
+    });
+    if (idx === item.correct) {
+      score++;
+      root.querySelector('#wg-scoretop').textContent = score;
+      root.querySelector('#wg-feedback').textContent = '✓ Correct! ' + item.explain;
+    } else {
+      root.querySelector('#wg-feedback').textContent = '✗ Not quite. ' + item.explain;
+    }
+    root.querySelector('#wg-next-btn').disabled = false;
+  }
+
+  root.querySelector('#wg-start-btn').addEventListener('click', () => {
+    current = 0; score = 0;
+    root.querySelector('#wg-scoretop').textContent = 0;
+    showScreen('wg-play');
+    renderQuestion();
+  });
+
+  root.querySelector('#wg-next-btn').addEventListener('click', () => {
+    if (!answered) return;
+    current++;
+    if (current >= QUESTIONS.length) {
+      finishGame();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  function finishGame() {
+    const dots = dotsEl.querySelectorAll('.wg-dot');
+    dots.forEach(d => { d.classList.remove('current'); d.classList.add('done'); });
+
+    root.querySelector('#wg-finalscore').textContent = score + '/' + QUESTIONS.length;
+    const msgEl = root.querySelector('#wg-finalmsg');
+    const subEl = root.querySelector('#wg-finalsub');
+    if (score === QUESTIONS.length) {
+      msgEl.textContent = 'Perfect score! The robot\u2019s fully calibrated \ud83e\udd16\u2728';
+      subEl.textContent = 'Review complete — let\u2019s move straight into today\u2019s lesson: using variables to control the house and car\u2019s position and size.';
+    } else if (score >= QUESTIONS.length - 2) {
+      msgEl.textContent = 'Solid work — the robot\u2019s mostly ready!';
+      subEl.textContent = 'Just a couple of details to watch for — keep an eye on coordinate direction and function arguments while you code.';
+    } else {
+      msgEl.textContent = 'No worries — good chance to recalibrate!';
+      subEl.textContent = 'Key things to remember: y increases downward, rect() draws from the top-left corner, ellipse() draws from the center.';
+    }
+    showScreen('wg-end');
+  }
+
+  root.querySelector('#wg-restart-btn').addEventListener('click', () => {
+    showScreen('wg-start');
+  });
+})();
+</script>
+
+</body>
+</html>
