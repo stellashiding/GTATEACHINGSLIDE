@@ -1,73 +1,30 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lab 2 — House and Car with Variables</title>
-  <style>
-    :root { color-scheme: dark; --pink:#ff3f87; --panel:#181317; }
-    * { box-sizing: border-box; }
-    html, body { height:100%; margin:0; background:#090909; font-family:Inter,system-ui,sans-serif; }
-    body { display:grid; grid-template-rows:auto 1fr auto; overflow:hidden; }
-    header, footer { display:flex; align-items:center; gap:.7rem; padding:.65rem 1rem; background:rgba(15,15,15,.96); z-index:2; }
-    header { justify-content:space-between; border-bottom:1px solid #33252c; }
-    header strong { font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    main { position:relative; display:grid; place-items:center; min-height:0; padding:1rem; }
-    .slide { display:none; max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 12px 45px #000b; }
-    .slide.active { display:block; }
-    footer { justify-content:center; border-top:1px solid #33252c; }
-    button, a { border:1px solid #56323f; background:var(--panel); color:#fff; border-radius:999px; padding:.52rem .9rem; font:inherit; text-decoration:none; cursor:pointer; }
-    button:hover, a:hover, button:focus-visible, a:focus-visible { border-color:var(--pink); outline:none; }
-    #counter { min-width:5.5rem; text-align:center; color:#e7ccd6; font-variant-numeric:tabular-nums; }
-    .hint { color:#ad969e; font-size:.78rem; }
-    @media (max-width:620px) { .hint { display:none; } header { padding:.5rem .7rem; } main { padding:.35rem; } }
-    @media print { header, footer { display:none; } body { display:block; } main { display:block; padding:0; } .slide { display:block; width:100%; max-height:none; page-break-after:always; box-shadow:none; } }
-  </style>
-</head>
-<body>
-  <header>
-    <strong>Lab 2: House and Car with Variables</strong>
-    <span class="hint">Use ← → keys to navigate</span>
-    <a href="Lab2_Student_Slides_Pink_Aug31.pptx" download>Download PPTX</a>
-  </header>
-  <main id="deck" aria-live="polite"></main>
-  <footer>
-    <button id="prev" type="button" aria-label="Previous slide">← Previous</button>
-    <span id="counter">1 / 12</span>
-    <button id="next" type="button" aria-label="Next slide">Next →</button>
-    <button id="full" type="button">Full screen</button>
-  </footer>
-  <script>
-    const total = 12;
-    const deck = document.querySelector('#deck');
-    for (let i = 1; i <= total; i++) {
-      const img = document.createElement('img');
-      img.src = `lab2-slides/slide-${i}.png`;
-      img.alt = `Lab 2 presentation slide ${i} of ${total}`;
-      img.className = 'slide' + (i === 1 ? ' active' : '');
-      img.loading = i < 3 ? 'eager' : 'lazy';
-      deck.appendChild(img);
-    }
-    let current = Math.max(1, Math.min(total, Number(location.hash.slice(1)) || 1));
-    function show(n) {
-      current = (n - 1 + total) % total + 1;
-      document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === current - 1));
-      document.querySelector('#counter').textContent = `${current} / ${total}`;
-      history.replaceState(null, '', `#${current}`);
-    }
-    document.querySelector('#prev').onclick = () => show(current - 1);
-    document.querySelector('#next').onclick = () => show(current + 1);
-    document.querySelector('#full').onclick = () => document.documentElement.requestFullscreen?.();
-    addEventListener('keydown', e => {
-      if (['ArrowRight','PageDown',' '].includes(e.key)) show(current + 1);
-      if (['ArrowLeft','PageUp'].includes(e.key)) show(current - 1);
-      if (e.key === 'Home') show(1);
-      if (e.key === 'End') show(total);
-    });
-    let startX = 0;
-    addEventListener('touchstart', e => startX = e.changedTouches[0].screenX, {passive:true});
-    addEventListener('touchend', e => { const d = e.changedTouches[0].screenX - startX; if (Math.abs(d) > 45) show(current + (d < 0 ? 1 : -1)); }, {passive:true});
-    show(current);
-  </script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lab 2 — House and Car with Variables</title>
+<style>
+:root{--pink:#ff3b82;--pale:#fff7fa;--ink:#171317;--muted:#70646a}*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Inter,Arial,sans-serif;background:#0b0b0b;color:var(--ink)}body{display:grid;grid-template-rows:1fr 64px;overflow:hidden}main{display:grid;place-items:center;min-height:0}.slide{width:min(1180px,calc(100vw - 28px));height:min(664px,calc(100vh - 82px));padding:48px 56px;background:var(--pale);overflow:auto;position:relative}.slide.dark{background:#101010;color:#fff}.eyebrow{color:var(--pink);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}h1{font-size:58px;line-height:1.03;margin:30px 0 18px}h2{font-size:38px;line-height:1.1;margin:10px 0 20px}h3{font-size:20px;margin:0 0 8px}p,li{font-size:18px;line-height:1.5;color:var(--muted)}.dark p,.dark li{color:#d5cbd0}.lead{max-width:760px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;border:1px solid #ead9e0;border-radius:11px;background:#fff}.dark .card{background:#25141c;border-color:#4a2936}.step{display:grid;grid-template-columns:38px 1fr;gap:12px;margin:12px 0}.num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;font-weight:800}.code{white-space:pre-wrap;font:15px/1.45 ui-monospace,monospace;background:#111;color:#fff;padding:17px;border-radius:9px}.cheat{display:grid;gap:11px}.cheat div{display:grid;grid-template-columns:250px 1fr;gap:16px;align-items:center;padding:11px;border:1px solid #ead9e0;border-radius:8px;background:#fff}.cheat code{padding:8px 10px;border-radius:5px;background:var(--pink);color:#fff;font-weight:700}.scene{height:330px;background:#ffe1ec;border-radius:14px;position:relative;overflow:hidden}.house{position:absolute;left:12%;bottom:16%;width:39%;height:42%;background:#fff;border:3px solid #222}.roof{position:absolute;left:7%;bottom:58%;width:49%;height:34%;background:var(--pink);clip-path:polygon(50% 0,100% 100%,0 100%)}.door{position:absolute;left:25%;bottom:16%;width:10%;height:25%;background:#ff8db5;border:2px solid #222}.car{position:absolute;right:8%;bottom:18%;width:34%;height:21%;background:#c82160;border:3px solid #222;border-radius:8px}.wheel{position:absolute;bottom:9%;width:36px;height:36px;border-radius:50%;background:#111}.w1{right:29%}.w2{right:9%}.links a{display:block;margin:10px 0;padding:14px 17px;border-radius:8px;color:#fff;background:#28141d;text-decoration:none}.nav{display:flex;align-items:center;justify-content:center;gap:10px;background:#111;border-top:1px solid #3b2830}.nav button,.nav a{padding:9px 15px;border:1px solid #603447;border-radius:999px;background:#1d1519;color:#fff;text-decoration:none;cursor:pointer}#count{min-width:72px;text-align:center;color:#e6ccd6}.page{position:absolute;right:24px;bottom:16px;color:#aa979f;font-size:12px}@media(max-width:760px){.slide{width:100vw;height:calc(100vh - 64px);padding:28px 22px}.grid,.cards{grid-template-columns:1fr}h1{font-size:42px}h2{font-size:31px}.cheat div{grid-template-columns:1fr}.nav a{display:none}}@media print{body{display:block}.nav{display:none}.slide{width:100%;height:auto;min-height:100vh}}
+</style></head><body><main id="deck"></main><nav class="nav"><a href="index.html">← Activities</a><button id="prev">← Previous</button><span id="count"></span><button id="next">Next →</button><button id="full">Full screen</button></nav>
+<script>
+const slides=[
+{dark:1,eye:"Lab 2",body:`<h1>House and Car<br>with Variables</h1><p class="lead">Build a scene in p5.js that scales and adjusts just by changing a few numbers.</p><div class="cards"><div class="card"><h3>Goal</h3><p>Use variables for position and size.</p></div><div class="card"><h3>Deliverable</h3><p>A house-and-car scene that stays proportional.</p></div></div>`},
+{eye:"Overview",body:`<div class="grid"><div><h2>What you’ll build</h2><p>A simple scene with at least one house and one car, made from basic shapes—but controlled by variables instead of hard-coded numbers.</p><div class="step"><span class="num">1</span><p>Practice variables for position and size.</p></div><div class="step"><span class="num">2</span><p>Build proportional layouts.</p></div></div><div class="scene"><div class="roof"></div><div class="house"></div><div class="door"></div><div class="car"></div><div class="wheel w1"></div><div class="wheel w2"></div></div></div>`},
+{eye:"Before you start",body:`<h2>Remember: y grows downward</h2><div class="grid"><div><p>In p5.js, <strong>(0, 0)</strong> is the top-left corner. x increases to the right; y increases going down.</p><ul><li>Increase y to move down.</li><li>Increase x to move right.</li><li><code>rect(x, y, w, h)</code> begins at the top-left corner.</li></ul></div><div class="code">(0,0) ─────────── x →<br><br> │<br> │ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ● (150, 90)<br> │<br> y ↓</div></div>`},
+{eye:"Cheat sheet",body:`<h2>Shape functions you already know</h2><div class="cheat"><div><code>rect(x, y, w, h)</code><span>Rectangle from its top-left corner</span></div><div><code>ellipse(x, y, w, h)</code><span>Oval centered at (x, y)</span></div><div><code>triangle(x1,y1,x2,y2,x3,y3)</code><span>Triangle from 3 points</span></div><div><code>line(x1,y1,x2,y2)</code><span>Straight line between 2 points</span></div><div><code>fill(r, g, b)</code><span>Color for what is drawn next</span></div></div>`},
+{eye:"The core idea",body:`<h2>Numbers vs. variables</h2><p>Hard-coded values are scattered and fragile. Variables let one change ripple through the whole shape.</p><div class="grid"><div><h3>Hard-coded ✕</h3><pre class="code">rect(50, 200, 100, 100);
+triangle(50, 200,
+  100, 150, 150, 200);
+// Edit every number by hand.</pre></div><div><h3>With variables ✓</h3><pre class="code">let houseX = 50;
+let houseY = 200;
+let houseWidth = 100;
+rect(houseX, houseY,
+  houseWidth, houseWidth);</pre></div></div>`},
+{eye:"Example",body:`<div class="grid"><div><h2>Naming variables for your house</h2><p>Give each measurement a clear name.</p><div class="cards"><div class="card"><h3>houseX, houseY</h3><p>Top-left corner</p></div><div class="card"><h3>houseWidth</h3><p>Body width</p></div><div class="card"><h3>houseHeight</h3><p>Body height</p></div><div class="card"><h3>roofHeight</h3><p>Triangle height</p></div></div></div><div class="scene"><div class="roof"></div><div class="house"></div><div class="door"></div></div></div>`},
+{eye:"Example",body:`<div class="grid"><div><h2>Naming variables for your car</h2><p>Position the wheels relative to the car body—not with separate fixed numbers.</p><div class="cards"><div class="card"><h3>carX, carY</h3><p>Body position</p></div><div class="card"><h3>carWidth</h3><p>Body width</p></div><div class="card"><h3>wheelRadius</h3><p>Wheel size</p></div><div class="card"><h3>wheel position</h3><p><code>carX + offset</code></p></div></div></div><div class="scene"><div class="car" style="right:18%;bottom:40%;width:62%"></div><div class="wheel" style="left:25%;bottom:31%"></div><div class="wheel" style="right:25%;bottom:31%"></div></div></div>`},
+{dark:1,eye:"Workflow",body:`<h2>How to build your scene</h2>${["Sketch on paper and label measurements.","Declare variables at the top.","Draw every shape using variables.","Change one value and rerun.","Fix misalignment with relationships, not fixed numbers."].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><p>${x}</p></div>`).join("")}`},
+{eye:"Before you submit",body:`<h2>Requirements & deliverables</h2><div class="grid"><div class="card"><h3>Requirements</h3><ul><li>At least one house and one car</li><li>Key dimensions use named variables</li><li>Changing a variable does not break the drawing</li></ul></div><div class="card"><h3>Deliverables</h3><ul><li>Public p5.js editor link</li><li>1–3 sentence description</li><li>One screenshot</li><li>Short screen recording</li></ul></div></div><p><strong>Upload together:</strong> one PDF and one video.</p>`},
+{eye:"Quick check",body:`<h2>Change one variable</h2><p class="lead">Choose <code>houseWidth</code> or <code>carX</code>, change it, and rerun.</p><div class="cards"><div class="card"><h3>What changed?</h3><p>Notice every affected part.</p></div><div class="card"><h3>What broke?</h3><p>Look for misalignment.</p></div><div class="card"><h3>Why?</h3><p>Find the fixed number.</p></div><div class="card"><h3>Repair it</h3><p>Use a relationship or offset.</p></div></div>`},
+{dark:1,eye:"Before the close activity",body:`<h2>Did the idea stick?</h2><p class="lead">You should now be able to explain why variables are more useful than scattered hard-coded numbers.</p><div class="cards"><div class="card"><h3>Variables</h3><p>Named, reusable values</p></div><div class="card"><h3>Relationships</h3><p>Positions calculated from shared values</p></div><div class="card"><h3>Proportions</h3><p>Parts stay aligned</p></div><div class="card"><h3>Testing</h3><p>Change, rerun, observe, repair</p></div></div>`},
+{dark:1,eye:"Need help?",body:`<h2>Resources</h2><div class="links"><a target="_blank" href="https://www.youtube.com/watch?v=yPWkPOfnGsw">Coding Train — Coordinates and Shapes ↗</a><a target="_blank" href="https://www.youtube.com/watch?v=wRHAitGzBrg">Coding Train — Function Basics ↗</a><a target="_blank" href="https://thecodingtrain.com/tracks/code-programming-with-p5-js">Coding Train — Programming with p5.js ↗</a><a target="_blank" href="https://p5js.org/reference/">p5.js Reference ↗</a></div><p>Sketch first, label measurements, then change one variable at a time.</p>`}
+];
+const deck=document.querySelector("#deck"),count=document.querySelector("#count");let n=Math.max(0,Math.min(slides.length-1,(+location.hash.slice(1)||1)-1));function show(i){n=(i+slides.length)%slides.length;let s=slides[n];deck.innerHTML=`<section class="slide ${s.dark?"dark":""}"><div class="eyebrow">${s.eye}</div>${s.body}<span class="page">${n+1}</span></section>`;count.textContent=`${n+1} / ${slides.length}`;history.replaceState(null,"",`#${n+1}`)}prev.onclick=()=>show(n-1);next.onclick=()=>show(n+1);full.onclick=()=>document.documentElement.requestFullscreen?.();addEventListener("keydown",e=>{if(["ArrowRight","PageDown"," "].includes(e.key))show(n+1);if(["ArrowLeft","PageUp"].includes(e.key))show(n-1)});let x=0;addEventListener("touchstart",e=>x=e.changedTouches[0].screenX,{passive:true});addEventListener("touchend",e=>{let d=e.changedTouches[0].screenX-x;if(Math.abs(d)>45)show(n+(d<0?1:-1))},{passive:true});show(n);
+</script></body></html>
