@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 2 — House and Car with Variables</title>
+  <style>
+    :root { color-scheme: dark; --pink:#ff3f87; --panel:#181317; }
+    * { box-sizing: border-box; }
+    html, body { height:100%; margin:0; background:#090909; font-family:Inter,system-ui,sans-serif; }
+    body { display:grid; grid-template-rows:auto 1fr auto; overflow:hidden; }
+    header, footer { display:flex; align-items:center; gap:.7rem; padding:.65rem 1rem; background:rgba(15,15,15,.96); z-index:2; }
+    header { justify-content:space-between; border-bottom:1px solid #33252c; }
+    header strong { font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    main { position:relative; display:grid; place-items:center; min-height:0; padding:1rem; }
+    .slide { display:none; max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 12px 45px #000b; }
+    .slide.active { display:block; }
+    footer { justify-content:center; border-top:1px solid #33252c; }
+    button, a { border:1px solid #56323f; background:var(--panel); color:#fff; border-radius:999px; padding:.52rem .9rem; font:inherit; text-decoration:none; cursor:pointer; }
+    button:hover, a:hover, button:focus-visible, a:focus-visible { border-color:var(--pink); outline:none; }
+    #counter { min-width:5.5rem; text-align:center; color:#e7ccd6; font-variant-numeric:tabular-nums; }
+    .hint { color:#ad969e; font-size:.78rem; }
+    @media (max-width:620px) { .hint { display:none; } header { padding:.5rem .7rem; } main { padding:.35rem; } }
+    @media print { header, footer { display:none; } body { display:block; } main { display:block; padding:0; } .slide { display:block; width:100%; max-height:none; page-break-after:always; box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Lab 2: House and Car with Variables</strong>
+    <span class="hint">Use ← → keys to navigate</span>
+    <a href="Lab2_Student_Slides_Pink_Aug31.pptx" download>Download PPTX</a>
+  </header>
+  <main id="deck" aria-live="polite"></main>
+  <footer>
+    <button id="prev" type="button" aria-label="Previous slide">← Previous</button>
+    <span id="counter">1 / 12</span>
+    <button id="next" type="button" aria-label="Next slide">Next →</button>
+    <button id="full" type="button">Full screen</button>
+  </footer>
+  <script>
+    const total = 12;
+    const deck = document.querySelector('#deck');
+    for (let i = 1; i <= total; i++) {
+      const img = document.createElement('img');
+      img.src = `lab2-slides/slide-${i}.png`;
+      img.alt = `Lab 2 presentation slide ${i} of ${total}`;
+      img.className = 'slide' + (i === 1 ? ' active' : '');
+      img.loading = i < 3 ? 'eager' : 'lazy';
+      deck.appendChild(img);
+    }
+    let current = Math.max(1, Math.min(total, Number(location.hash.slice(1)) || 1));
+    function show(n) {
+      current = (n - 1 + total) % total + 1;
+      document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === current - 1));
+      document.querySelector('#counter').textContent = `${current} / ${total}`;
+      history.replaceState(null, '', `#${current}`);
+    }
+    document.querySelector('#prev').onclick = () => show(current - 1);
+    document.querySelector('#next').onclick = () => show(current + 1);
+    document.querySelector('#full').onclick = () => document.documentElement.requestFullscreen?.();
+    addEventListener('keydown', e => {
+      if (['ArrowRight','PageDown',' '].includes(e.key)) show(current + 1);
+      if (['ArrowLeft','PageUp'].includes(e.key)) show(current - 1);
+      if (e.key === 'Home') show(1);
+      if (e.key === 'End') show(total);
+    });
+    let startX = 0;
+    addEventListener('touchstart', e => startX = e.changedTouches[0].screenX, {passive:true});
+    addEventListener('touchend', e => { const d = e.changedTouches[0].screenX - startX; if (Math.abs(d) > 45) show(current + (d < 0 ? 1 : -1)); }, {passive:true});
+    show(current);
+  </script>
+</body>
+</html>
