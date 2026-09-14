@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Georgia Tech Lab 4 | Working with Images</title>
+<style>
+:root{--pink:#ff3b82;--pale:#fff7fa;--ink:#171317;--muted:#70646a;--green:#22c55e}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Inter,Arial,sans-serif;background:#0b0b0b;color:var(--ink)}body{display:grid;grid-template-rows:1fr 64px;overflow:hidden}main{display:grid;min-height:0}.slide{width:100vw;height:calc(100vh - 64px);padding:40px 52px;background:var(--pale);overflow:auto;position:relative}.dark{background:#101010;color:#fff}.eyebrow{color:var(--pink);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.time{position:absolute;right:52px;top:36px;padding:7px 13px;border-radius:999px;background:#ffe0eb;color:#9d174d;font-weight:800}.dark .time{background:#341522;color:#ff9bc0}h1{font-size:58px;line-height:1.03;margin:28px 0 18px}h2{font-size:38px;line-height:1.1;margin:10px 0 20px}h3{font-size:20px;margin:0 0 8px}p,li{font-size:18px;line-height:1.45;color:var(--muted)}.dark p,.dark li{color:#d5cbd0}.lead{max-width:850px;font-size:22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:18px;border:1px solid #ead9e0;border-radius:12px;background:#fff}.dark .card{background:#25141c;border-color:#4a2936}.step{display:grid;grid-template-columns:38px 1fr;gap:12px;margin:8px 0}.num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;font-weight:800}.code{white-space:pre-wrap;font:15px/1.38 ui-monospace,SFMono-Regular,Menlo,monospace;background:#111;color:#f8f8f2;padding:16px;border-radius:10px;margin:0}.prompt{padding:15px 18px;border-left:6px solid var(--pink);background:#fff;border-radius:8px;margin-top:14px}.dark .prompt{background:#25141c}.level{font-size:13px;font-weight:800;color:var(--pink);letter-spacing:1px;text-transform:uppercase}.nav{display:flex;align-items:center;justify-content:center;gap:10px;background:#111;border-top:1px solid #3b2830}.nav button,.nav a{padding:9px 15px;border:1px solid #603447;border-radius:999px;background:#1d1519;color:#fff;text-decoration:none;cursor:pointer}#count{min-width:78px;text-align:center;color:#e6ccd6}.page{position:absolute;right:24px;bottom:15px;color:#aa979f;font-size:12px}.demo{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;height:520px}.editor{display:flex;flex-direction:column;min-height:0}.editor textarea{flex:1;resize:none;border:0;border-radius:10px 10px 0 0;background:#111;color:#f8f8f2;padding:16px;font:14px/1.38 ui-monospace,monospace}.run{border:0;border-radius:0 0 10px 10px;padding:12px;background:var(--pink);color:white;font-size:16px;font-weight:800;cursor:pointer}.preview{width:100%;height:100%;border:1px solid #ead9e0;border-radius:10px;background:#fff}.tiny{font-size:14px}.check{color:var(--green);font-weight:800}@media(max-width:850px){.slide{padding:28px 22px}.grid,.cards,.demo{grid-template-columns:1fr}.demo{height:auto}.editor textarea,.preview{min-height:320px}h1{font-size:42px}h2{font-size:31px}.time{right:22px;top:22px}.nav a{display:none}}@media print{body{display:block}.nav{display:none}.slide{width:100%;height:auto;min-height:100vh}}html:fullscreen body{grid-template-rows:1fr}html:fullscreen .nav{display:none}html:fullscreen .slide{height:100vh}
+</style></head><body><main id="deck"></main><nav class="nav"><a href="index.html">← Home</a><button id="prev">← Previous</button><span id="count"></span><button id="next">Next →</button><button id="full">Full screen</button></nav>
+<script>
+const baseCode=`let photo;
+
+function preload() {
+  photo = loadImage(
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/640px-Fronalpstock_big.jpg"
+  );
+}
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(255, 230, 240);
+  image(photo, 40, 60, 260, 180);
+}`;
+const interactiveCode=`let photo;
+
+function preload() {
+  photo = loadImage(
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/640px-Fronalpstock_big.jpg"
+  );
+}
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(255, 230, 240);
+  let pictureSize = map(mouseX, 0, width, 120, 360);
+  imageMode(CENTER);
+  image(photo, mouseX, mouseY, pictureSize, pictureSize * 0.7);
+}`;
+const slides=[
+{dark:1,eye:"Georgia Tech · Lab 4",time:"0–2 min",body:`<h1>Working with Images<br>in p5.js</h1><p class="lead">Create a collage, a simple animation, or an interactive scene</p><div class="cards"><div class="card"><h3>Assigned</h3><p>Monday, September 14</p></div><div class="card"><h3>Due</h3><p>Monday, September 21</p></div><div class="card"><h3>Today</h3><p>Load, place, resize, and control an image.</p></div></div>`},
+{eye:"Opening activity",time:"2–8 min",body:`<h2>One image, three meanings</h2><p class="lead">In groups of three, choose one image on a phone or laptop. Imagine three different ways it could appear in an artwork.</p><div class="cards"><div class="card"><div class="level">Collage</div><h3>Combine</h3><p>What could you place beside or behind it?</p></div><div class="card"><div class="level">Animation</div><h3>Move</h3><p>Where could it travel, rotate, or change size?</p></div><div class="card"><div class="level">Interaction</div><h3>Respond</h3><p>What should happen when a user clicks or moves?</p></div></div><div class="prompt"><strong>Share:</strong> Give your idea a six-word title.</div>`},
+{eye:"Assignment",time:"8–11 min",body:`<h2>What you need to make</h2><div class="grid"><div class="card"><h3>Requirements</h3><ul><li>Load at least one external image with <code>loadImage()</code>.</li><li>Arrange images into a coherent visual idea.</li><li>Create a collage, animation, or interactive scene.</li></ul></div><div class="card"><h3>Deliverables</h3><ul><li>One PDF with sketch link and 3–4 sentence description.</li><li>Screenshot showing the sketch and code.</li><li>Video recording showing the interaction.</li></ul></div></div>`},
+{eye:"Core idea",time:"11–15 min",body:`<h2>Images need two steps</h2><div class="grid"><div><div class="step"><span class="num">1</span><p><code>loadImage()</code> loads the pixels into a variable.</p></div><div class="step"><span class="num">2</span><p><code>image()</code> places those pixels on the canvas.</p></div><div class="prompt"><strong>Memory phrase:</strong> load first, draw second.</div></div><pre class="code">let photo;
+
+function preload() {
+  photo = loadImage("myPhoto.jpg");
+}
+
+function draw() {
+  image(photo, 40, 60);
+}</pre></div>`},
+{eye:"Live p5.js demo",time:"15–23 min",demo:"base",body:`<h2>Edit the code and run it</h2><p class="tiny">Change the four numbers inside <code>image(photo, x, y, width, height)</code>. The preview uses p5.js in this page.</p><div class="demo"><div class="editor"><textarea id="codeEditor"></textarea><button class="run" id="runCode">Run code</button></div><iframe class="preview" id="preview" title="p5.js live preview"></iframe></div>`},
+{eye:"Practice 1",time:"23–28 min",body:`<h2>Place one image</h2><div class="grid"><div><div class="step"><span class="num">1</span><p>Upload an image into the p5.js editor.</p></div><div class="step"><span class="num">2</span><p>Copy the exact filename, including its extension.</p></div><div class="step"><span class="num">3</span><p>Load it inside <code>preload()</code>.</p></div><div class="step"><span class="num">4</span><p>Draw it at <code>(0, 0)</code>, then move it.</p></div></div><pre class="code">let myImage;
+
+function preload() {
+  myImage = loadImage("cat.png");
+}
+
+function setup() {
+  createCanvas(600, 400);
+  image(myImage, 0, 0, 240, 180);
+}</pre></div><p class="check">Checkpoint: the image appears without an error message.</p>`},
+{eye:"Practice 2",time:"28–35 min",body:`<h2>Control composition</h2><div class="grid"><pre class="code">image(photo, x, y, w, h);
+
+// Try a second placement
+image(photo, 320, 80, 180, 130);
+
+// Try transparency
+tint(255, 140);
+image(photo, 180, 180, 260, 180);
+noTint();</pre><div><div class="step"><span class="num">1</span><p>Place the same image twice.</p></div><div class="step"><span class="num">2</span><p>Give each copy a different size.</p></div><div class="step"><span class="num">3</span><p>Overlap them intentionally.</p></div><div class="step"><span class="num">4</span><p>Explain what the placement makes viewers notice first.</p></div></div></div>`},
+{eye:"Live interaction demo",time:"35–41 min",demo:"interactive",body:`<h2>The mouse can control the image</h2><p class="tiny">Move the pointer across the preview after running the code. Then change the size range inside <code>map()</code>.</p><div class="demo"><div class="editor"><textarea id="codeEditor"></textarea><button class="run" id="runCode">Run code</button></div><iframe class="preview" id="preview" title="interactive p5.js preview"></iframe></div>`},
+{dark:1,eye:"Practice 3",time:"41–49 min",body:`<h2>Choose one direction</h2><div class="cards"><div class="card"><div class="level">Collage</div><h3>Visual hierarchy</h3><p>Use at least two placements and one overlap. Make one image dominant.</p></div><div class="card"><div class="level">Animation</div><h3>Image movement</h3><p>Use a position variable and update it inside <code>draw()</code>.</p></div><div class="card"><div class="level">Interaction</div><h3>User control</h3><p>Connect image position or size to the mouse or a key.</p></div></div><div class="prompt"><strong>Design check:</strong> What should users feel or notice, and which code choice supports that?</div>`},
+{eye:"Debug clinic",time:"49–54 min",body:`<h2>When the image does not appear</h2><div class="grid"><div class="card"><h3>Check in this order</h3><ol><li>Is the file uploaded?</li><li>Does capitalization match?</li><li>Does the extension match?</li><li>Is loading inside <code>preload()</code>?</li><li>Are width and height greater than zero?</li></ol></div><pre class="code">// These are different filenames:
+"Photo.JPG"
+"photo.jpg"
+"photo.jpeg"
+
+// Use the exact uploaded name.
+photo = loadImage("Photo.JPG");</pre></div>`},
+{eye:"Gallery check",time:"54–57 min",body:`<h2>Test a partner’s sketch</h2><div class="grid"><div><div class="step"><span class="num">1</span><p>View the sketch before reading its description.</p></div><div class="step"><span class="num">2</span><p>Say what you notice first.</p></div><div class="step"><span class="num">3</span><p>Try the interaction, if there is one.</p></div></div><div class="card"><h3>Useful feedback</h3><p>“I noticed ______ first because ______. I expected the image to ______ when I ______.”</p></div></div>`},
+{dark:1,eye:"Post activity",time:"57–59 min",body:`<h2>Fix the code</h2><pre class="code">let photo;
+
+function setup() {
+  createCanvas(600, 400);
+  photo = loadImage("flower.png");
+  image(photo, 100, 100);
+}</pre><div class="prompt"><strong>Question:</strong> What should move, and why? <br><strong>Answer:</strong> Load the image inside <code>preload()</code>, then display it in <code>setup()</code> or <code>draw()</code>.</div>`},
+{eye:"Exit ticket",time:"59–60 min",body:`<h2>Show one piece of evidence</h2><div class="cards"><div class="card"><h3>Code</h3><p>Point to your <code>loadImage()</code> line.</p></div><div class="card"><h3>Canvas</h3><p>Show where you controlled placement or size.</p></div><div class="card"><h3>Idea</h3><p>Complete: “I want viewers to notice…”</p></div></div><p class="lead"><strong>Before submitting:</strong> test the public link and play the entire recording once.</p>`},
+{dark:1,eye:"Resources",time:"After class",body:`<h2>Continue working</h2><div class="grid"><div class="card"><h3>Videos</h3><p><a target="_blank" href="https://www.youtube.com/watch?v=UyxOpFGNnlE">How to Load an Image in p5.js</a></p><p><a target="_blank" href="https://www.youtube.com/watch?v=WlkX8JH_zy8">Alternate walkthrough</a></p></div><div class="card"><h3>References</h3><p><a target="_blank" href="https://p5js.org/reference/p5/loadImage/">p5.js loadImage() reference</a></p><p><a target="_blank" href="https://p5js.org/examples/">p5.js examples</a></p></div></div>`}
+];
+function demoDocument(code){const safe=code.replace(/<\/script/gi,"<\\/script");return `<!doctype html><html><head><style>html,body{margin:0;overflow:hidden;background:white}canvas{display:block;max-width:100%;height:auto!important}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><script>${safe}<\/script></body></html>`}
+const deck=document.querySelector("#deck"),count=document.querySelector("#count");let n=Math.max(0,Math.min(slides.length-1,(+location.hash.slice(1)||1)-1));function show(i){n=(i+slides.length)%slides.length;const s=slides[n];deck.innerHTML=`<section class="slide ${s.dark?"dark":""}"><div class="eyebrow">${s.eye}</div><div class="time">${s.time}</div>${s.body}<span class="page">${n+1}</span></section>`;count.textContent=`${n+1} / ${slides.length}`;history.replaceState(null,"",`#${n+1}`);if(s.demo){const editor=document.querySelector("#codeEditor"),preview=document.querySelector("#preview");editor.value=s.demo==="interactive"?interactiveCode:baseCode;const run=()=>preview.srcdoc=demoDocument(editor.value);document.querySelector("#runCode").onclick=run;run()}}prev.onclick=()=>show(n-1);next.onclick=()=>show(n+1);full.onclick=()=>document.documentElement.requestFullscreen?.();addEventListener("keydown",e=>{if(["ArrowRight","PageDown"].includes(e.key))show(n+1);if(["ArrowLeft","PageUp"].includes(e.key))show(n-1)});show(n);
+</script></body></html>
