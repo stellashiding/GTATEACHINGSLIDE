@@ -24,6 +24,7 @@ function draw() {
   image(photo, 40, 60, 260, 180);
 }`;
 const interactiveCode=`let photo;
+let pictureSize = 200;
 
 function preload() {
   photo = loadImage(
@@ -37,7 +38,7 @@ function setup() {
 
 function draw() {
   background(255, 230, 240);
-  let pictureSize = map(mouseX, 0, width, 120, 360);
+  pictureSize = map(mouseX, 0, width, 120, 360);
   imageMode(CENTER);
   image(photo, mouseX, mouseY, pictureSize, pictureSize * 0.7);
 }
