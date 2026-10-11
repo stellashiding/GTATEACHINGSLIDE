@@ -18,12 +18,12 @@
     .detective{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:center}.viz{height:370px;border-radius:16px;background:#1a1023;overflow:hidden;display:grid;place-items:center}.viz svg{width:100%;height:100%}.choices{display:grid;gap:10px}.choice{padding:13px 15px;text-align:left;border:2px solid #ead9e0;border-radius:11px;background:#fff;font-size:17px;cursor:pointer}.choice:hover{border-color:var(--p)}.choice.correct{border-color:var(--green);background:#ecfdf3}.choice.wrong{border-color:#dc2626;background:#fff1f2}.feedback{min-height:54px;margin-top:12px;padding:12px 14px;border-radius:9px;background:#fff}.feedback.good{border-left:5px solid var(--green)}.feedback.try{border-left:5px solid #dc2626}
     .path{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}.path span{padding:10px 13px;border-radius:8px;background:#111;color:#fff;font:800 18px ui-monospace,monospace}.path i{color:var(--p);font-size:24px;font-style:normal;font-weight:900}
     .mapping{display:grid;grid-template-columns:1fr auto 1fr;gap:15px;align-items:center;margin:10px 0}.mapping .field,.mapping .property{padding:14px;border-radius:10px;font-weight:800}.mapping .field{background:#dbeafe;color:#1e40af}.mapping .property{background:#fce7f3;color:#9d174d}.mapping .arrow{font-size:24px;color:var(--p)}
-    .demo{display:grid;grid-template-columns:1.08fr .92fr;gap:14px;height:510px}.editor{display:flex;flex-direction:column;min-height:0}.editor textarea{flex:1;resize:none;border:0;border-radius:10px 10px 0 0;background:#111;color:#f8f8f2;padding:15px;font:13px/1.34 ui-monospace,monospace;tab-size:2}.demo-controls{display:flex;gap:7px;padding:9px;background:#20151a;border-radius:0 0 10px 10px}.run,.source-btn,.reveal,.copy{border:0;border-radius:8px;padding:10px 13px;background:var(--p);color:#fff;font-weight:900;cursor:pointer}.source-btn{background:#442432}.source-btn.active{outline:2px solid #ff9fc1;background:#713047}.run{margin-left:auto}.preview{width:100%;height:100%;border:1px solid #ead9e0;border-radius:10px;background:#fff}.tiny{font-size:14px;margin:0 0 9px}
+    .p5-shell{height:500px;border:1px solid #b9b9b9;background:#f4f4f4;box-shadow:0 8px 24px #31101b24;overflow:hidden;font-family:Arial,sans-serif}.p5-menu{height:32px;display:flex;align-items:center;gap:19px;border-bottom:1px dashed #bbb;background:#fafafa;color:#4b4b4b;font-size:12px}.p5-logo{align-self:stretch;display:grid;place-items:center;width:45px;background:#ed225d;color:#fff;font:900 17px/1 Arial}.p5-menu span:not(.p5-logo)::after{content:" ▾";font-size:9px;color:#777}.p5-toolbar{height:54px;display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:1px solid #c8c8c8;background:#f7f7f7}.p5-action{width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:50%;background:#ddd;cursor:pointer}.p5-action:hover,.p5-action:focus-visible{outline:3px solid #f8a6be}.p5-action.stop{background:#ed225d}.play-icon{width:0;height:0;margin-left:3px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid #333}.stop-icon{width:14px;height:14px;background:#fff}.auto-refresh{display:flex;align-items:center;gap:5px;color:#555;font-size:12px}.sketch-name{margin-left:8px;color:#444;font-size:13px}.p5-version{margin-left:auto;padding:5px 9px;border-radius:13px;background:#ddd;color:#555;font-size:11px}.source-switch{display:flex;gap:5px}.source-btn{border:1px solid #bbb;border-radius:5px;padding:6px 9px;background:#fff;color:#555;font-size:11px;font-weight:800;cursor:pointer}.source-btn.active{border-color:#ed225d;background:#ffe3eb;color:#a5123e}.p5-workspace{display:grid;grid-template-columns:118px minmax(0,1.05fr) minmax(0,.95fr);height:414px;min-height:0}.p5-files{min-height:0;overflow:hidden;border-right:1px solid #c7c7c7;background:#f3f3f3;color:#555;font-size:12px}.p5-files h3{margin:0;padding:10px;border-bottom:1px solid #ccc;font-size:12px}.file-item{padding:7px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-item.active{background:#ddd;color:#111;font-weight:800}.file-item::before{content:"▱";margin-right:6px;color:#777}.file-item.active::before{content:"◆";color:#ed225d;font-size:8px}.p5-code-column{display:grid;grid-template-rows:minmax(0,1fr) 104px;min-width:0;min-height:0;height:100%;overflow:hidden;border-right:1px solid #c7c7c7}.editor-pane{display:flex;flex-direction:column;min-height:0;overflow:hidden}.pane-head{height:30px;flex:0 0 30px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid #ccc;background:#f5f5f5;color:#555;font-size:12px}.pane-head strong{color:#333}.code-wrap{display:grid;grid-template-columns:42px 1fr;min-height:0;overflow:hidden;flex:1;background:#fff}.line-numbers{height:100%;margin:0;padding:10px 8px;border-right:1px solid #ddd;overflow:hidden;background:#f6f6f6;color:#999;text-align:right;font:12px/1.42 ui-monospace,monospace;user-select:none}.code-wrap textarea{width:100%;height:100%;min-height:0;resize:none;border:0;outline:0;padding:10px 12px;background:#fff;color:#252525;font:12px/1.42 ui-monospace,monospace;tab-size:2;white-space:pre}.p5-console{display:flex;flex-direction:column;min-height:0;overflow:hidden;border-top:1px solid #bbb;background:#f1f1f1}.console-head{height:27px;flex:0 0 27px;display:flex;align-items:center;padding:0 9px;background:#d9d9d9;color:#333;font-size:12px}.console-head button{margin-left:auto;border:0;background:transparent;color:#555;font-size:11px;cursor:pointer}.console-output{flex:1;margin:0;padding:7px 10px;overflow:auto;color:#333;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap}.preview-column{display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;overflow:hidden;background:#fff}.preview{flex:1;width:100%;min-height:0;border:0;background:#f2f2f2}.demo-note{font-size:14px;margin:0 0 9px}.reveal,.copy{border:0;border-radius:8px;padding:10px 13px;background:var(--p);color:#fff;font-weight:900;cursor:pointer}
     .timer{position:absolute;left:52px;bottom:13px;display:flex;align-items:center;gap:8px;padding:8px 11px;background:#111;color:#fff;border-radius:10px}.timer strong{min-width:58px;color:#ff8db5;font:900 22px/1 ui-monospace}.timer button{background:#29151e;color:#fff;border:1px solid #684052;border-radius:7px;padding:6px 9px}.reveal{margin-top:13px}.answer{display:none;margin-top:12px;padding:14px 17px;border-left:6px solid var(--green);border-radius:8px;background:#ecfdf3;color:#214b31}.answer.show{display:block}.dark .answer{background:#153522;color:#dcfce7}
     .checklist{list-style:none;padding:0}.checklist li{position:relative;padding:8px 0 8px 34px}.checklist li::before{content:"□";position:absolute;left:0;color:var(--p);font-size:24px;line-height:1}.debug-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.debug-flow div{padding:17px;border-radius:11px;background:#fff;border-top:5px solid var(--p)}.debug-flow b{display:block;margin-bottom:7px}.response{display:grid;gap:10px}.response label{font-weight:800}.response input{width:100%;padding:11px 12px;border:2px solid #ead9e0;border-radius:9px;background:#fff}.response input:focus{outline:2px solid #ff8db5;border-color:var(--p)}#copyStatus{min-height:24px;color:#166534;font-weight:800}
     .download{color:#9d174d;font-weight:800}.dark .download{color:#ff9fc1}.legend{display:flex;gap:18px;justify-content:center;color:#dccdd4;font-size:14px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}
     @media(max-width:1000px){.pipeline{grid-template-columns:repeat(4,1fr)}.step::after{display:none}.debug-flow{grid-template-columns:1fr 1fr}}
-    @media(max-width:900px){.slide{padding:24px 22px}.grid,.cards,.detective,.demo{grid-template-columns:1fr}.demo{height:auto}.editor textarea,.preview{min-height:340px}.viz{height:280px}.time{right:22px;top:20px}h1{font-size:42px}h2{font-size:30px}.nav a{display:none}.timer{left:22px}.pipeline{grid-template-columns:1fr 1fr}.mapping{grid-template-columns:1fr}.mapping .arrow{transform:rotate(90deg);text-align:center}}
+    @media(max-width:900px){.slide{padding:24px 22px}.grid,.cards,.detective{grid-template-columns:1fr}.viz{height:280px}.time{right:22px;top:20px}h1{font-size:42px}h2{font-size:30px}.nav a{display:none}.timer{left:22px}.pipeline{grid-template-columns:1fr 1fr}.mapping{grid-template-columns:1fr}.mapping .arrow{transform:rotate(90deg);text-align:center}.p5-shell{height:auto}.p5-menu span:not(.p5-logo){display:none}.p5-workspace{grid-template-columns:92px minmax(0,1fr);height:auto}.p5-code-column{height:480px;border-right:0}.preview-column{grid-column:1/-1;height:390px;border-top:1px solid #bbb}.p5-version,.sketch-name{display:none}.source-switch{margin-left:auto}}
     html:fullscreen body{grid-template-rows:1fr}html:fullscreen .nav{display:none}html:fullscreen .slide{height:100vh}
   </style>
 </head>
@@ -47,22 +47,17 @@
     ]};
 
     const apiDemoCode=`let libraryData;
-const API_URL = "https://openlibrary.org/search.json?q=creative+coding&fields=key,title,first_publish_year,edition_count&limit=8";
-const sampleData = ${JSON.stringify(sampleData,null,2)};
+const API_URL = "https://openlibrary.org/search.json?q=creative+coding&fields=title,first_publish_year,edition_count&limit=7";
+const SAMPLE_URL = "assets/lab7/open-library-sample.json";
 
 function preload() {
-  if (window.USE_SAMPLE_DATA) {
-    libraryData = sampleData;
-    console.log("Sample data:", libraryData);
-    return;
-  }
-
+  const source = USE_SAMPLE_DATA ? SAMPLE_URL : API_URL;
   libraryData = loadJSON(
-    API_URL,
-    data => console.log("Open Library response:", data),
-    error => {
-      console.warn("API unavailable — using sample data.");
-      libraryData = sampleData;
+    source,
+    data => console.log("Loaded", data.docs.length, "books"),
+    () => {
+      libraryData = SAMPLE_DATA;
+      console.warn("Using the classroom sample.");
     }
   );
 }
@@ -70,29 +65,45 @@ function preload() {
 function setup() {
   createCanvas(620, 390);
   textFont("Arial");
-  console.log("Is it an array?", Array.isArray(libraryData));
-  console.log("The records live at libraryData.docs");
+  console.log("First record:", libraryData.docs[0]);
   noLoop();
 }
 
 function draw() {
-  background(25, 16, 35);
-  fill(255);
-  textSize(14);
-  text("publication year → x     edition count → size", 18, 25);
+  background(250);
+  const books = libraryData.docs.slice(0, 7);
 
-  for (let i = 0; i < libraryData.docs.length; i++) {
-    const book = libraryData.docs[i];
-    const x = map(book.first_publish_year, 1900, 2026, 55, width - 55, true);
-    const size = map(book.edition_count, 0, 80, 24, 105, true);
-    const y = 80 + (i % 3) * 125;
+  fill(35);
+  textSize(16);
+  textStyle(BOLD);
+  text("Creative coding books", 16, 25);
+  textStyle(NORMAL);
 
-    noStroke();
-    fill(255, 59, 130, 190);
-    circle(x, y, size);
-    fill(255);
+  stroke(160);
+  line(210, 50, width - 40, 50);
+  noStroke();
+  textSize(10);
+  text("1990", 195, 43);
+  text("2008", 380, 43);
+  text("2026", width - 58, 43);
+
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    const y = 78 + i * 43;
+    const x = map(book.first_publish_year, 1990, 2026, 210, width - 45, true);
+    const size = map(book.edition_count, 0, 15, 10, 36, true);
+
+    if (i % 2 === 0) {
+      fill(242);
+      rect(8, y - 18, width - 16, 36, 4);
+    }
+    fill(45);
     textSize(11);
-    text(book.title.slice(0, 24), x - 38, y + size / 2 + 15, 90);
+    text(book.title.slice(0, 25), 16, y + 4);
+    fill(237, 34, 93, 205);
+    circle(x, y, size);
+    fill(90);
+    text(book.first_publish_year, x + 22, y + 4);
   }
 }`;
 
@@ -127,18 +138,18 @@ function preload() {
       {eye:"Meaningful Mapping",time:"3 minutes",reveal:1,body:`<h2>A working mapping is not automatically a useful one</h2><div class="grid"><div class="card"><h3>Defensible choices</h3><ul><li>More editions → larger circle</li><li>Earlier year → farther left</li><li>Higher temperature → warmer color</li><li>More rainfall → denser marks</li></ul></div><div class="card"><h3>Ask before coding</h3><p>What comparison should viewers make?</p><p>Does the visual property reinforce that comparison?</p><p>Can I explain the rule in one sentence?</p></div></div><button class="reveal">Reveal the test</button><div class="answer"><strong>The “because” test:</strong> If you cannot finish “field → property because…”, the mapping may be arbitrary.</div>`},
       {eye:"Open Library · Predict Before Run",time:"2 minutes",body:`<h2>Predict the output before opening the demo</h2><div class="grid"><pre class="code">const x = map(
   book.first_publish_year,
-  1900, 2026,
-  55, width - 55,
+  1990, 2026,
+  210, width - 45,
   true
 );
 
 const size = map(
   book.edition_count,
-  0, 80,
-  24, 105,
+  0, 15,
+  10, 36,
   true
-);</pre><div class="card"><h3>Turn and talk</h3><p>Where should a book from 1910 appear?</p><p>Which book receives the largest circle?</p><p>What does the final <code>true</code> do?</p></div></div>`},
-      {eye:"Open Library · Live API + Fallback",time:"6 minutes",demo:1,body:`<h2>Edit one range, predict, then run</h2><p class="tiny">Try changing circle size from <code>24, 105</code> to <code>8, 160</code>. Use the sample button to rehearse without network access.</p><div class="demo"><div class="editor"><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js code"></textarea><div class="demo-controls"><button class="source-btn active" id="liveSource" type="button">Live API</button><button class="source-btn" id="sampleSource" type="button">Sample fallback</button><button class="run" id="runCode" type="button">Run code</button></div></div><iframe class="preview" id="preview" title="p5.js data visualization preview"></iframe></div>`},
+);</pre><div class="card"><h3>Turn and talk</h3><p>Where should a book from 1993 appear?</p><p>Which book receives the largest circle?</p><p>What does the final <code>true</code> do?</p></div></div>`},
+      {eye:"Open Library · p5.js Canvas Demo",time:"6 minutes",demo:1,body:`<h2>Code on the left. Canvas on the right.</h2><p class="demo-note">Predict first: change the circle output range from <code>10, 36</code> to <code>6, 52</code>, then press ▶ Run. Each book gets its own row so labels stay readable.</p><div class="p5-shell"><div class="p5-menu"><span class="p5-logo">p5*</span><span>File</span><span>Edit</span><span>Sketch</span><span>Help</span></div><div class="p5-toolbar"><button class="p5-action" id="runCode" type="button" aria-label="Run sketch"><span class="play-icon"></span></button><button class="p5-action stop" id="stopCode" type="button" aria-label="Stop sketch"><span class="stop-icon"></span></button><label class="auto-refresh"><input id="autoRefresh" type="checkbox"> Auto-refresh</label><span class="sketch-name">lab7-data-mapping ✎</span><div class="source-switch"><button class="source-btn active" id="liveSource" type="button">Live API</button><button class="source-btn" id="sampleSource" type="button">Sample data</button></div><span class="p5-version">p5.js 1.11.3</span></div><div class="p5-workspace"><aside class="p5-files"><h3>Sketch files</h3><div class="file-item active">sketch.js</div><div class="file-item">open-library-sample.json</div><div class="file-item">index.html</div><div class="file-item">style.css</div></aside><section class="p5-code-column"><div class="editor-pane"><div class="pane-head"><strong>sketch.js</strong></div><div class="code-wrap"><pre class="line-numbers" id="lineNumbers" aria-hidden="true"></pre><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js sketch code"></textarea></div></div><div class="p5-console"><div class="console-head"><strong>Console</strong><button id="clearConsole" type="button">Clear</button></div><pre class="console-output" id="demoConsole" aria-live="polite">Ready. Press ▶ Run.</pre></div></section><section class="preview-column"><div class="pane-head"><strong>Preview</strong></div><iframe class="preview" id="preview" title="p5.js canvas preview"></iframe></section></div></div>`},
       {dark:1,eye:"Guided Mapping Practice",time:"5 minutes",timer:300,body:`<h2>Make three intentional changes</h2><div class="cards"><div class="card"><h3>1 · Access</h3><p>Change the label from <code>title</code> to <code>first_publish_year</code>.</p></div><div class="card"><h3>2 · Map</h3><p>Change the output range for size or x-position.</p></div><div class="card"><h3>3 · Explain</h3><p>Finish: “I mapped ___ to ___ because ___.”</p></div></div><div class="prompt"><strong>Pair checkpoint:</strong> Point to the exact <code>docs[i].field</code> path and the exact visual property it controls.</div>`},
       {eye:"Debugging Clinic",time:"3 minutes",body:`<h2>Use evidence; do not guess randomly</h2><div class="debug-flow"><div><b>1 · Did it load?</b><span>Read the console and status.</span></div><div><b>2 · What shape?</b><span>Log the whole response.</span></div><div><b>3 · What path?</b><span>Expand objects and arrays.</span></div><div><b>4 · What value?</b><span>Log one field before <code>map()</code>.</span></div></div><div class="grid" style="margin-top:18px"><pre class="code">console.log(data);
 console.log(data.docs);
@@ -164,7 +175,8 @@ function setup() {
 
     function demoDoc(code,useSample){
       const safe=code.replace(/<\/script/gi,"<\\/script");
-      return `<!doctype html><html><head><base href="${document.baseURI}"><style>html,body{margin:0;font:13px ui-monospace}body{height:100vh;display:flex;flex-direction:column;overflow:hidden}canvas{max-width:100%;height:auto!important}section{flex:1;min-height:112px;overflow:auto;background:#111;color:#ddd;padding:9px 12px}b{color:#ff6fa8}pre{white-space:pre-wrap}.mode{float:right;color:#fde68a}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><section><b>Console</b><span class="mode">${useSample?'SAMPLE FALLBACK':'LIVE API → SAMPLE ON ERROR'}</span><pre id="log">Starting p5.js…</pre></section><script>window.USE_SAMPLE_DATA=${useSample};const el=document.querySelector('#log'),format=x=>{try{return typeof x==='object'?JSON.stringify(x,null,2):String(x)}catch{return String(x)}},write=a=>{el.textContent+='\\n'+a.map(format).join(' ')};['log','warn','error'].forEach(level=>{const old=console[level];console[level]=(...a)=>{write(a);old(...a)}});addEventListener('error',e=>write(['✗',e.message]));addEventListener('unhandledrejection',e=>write(['✗',e.reason]));${safe}<\/script></body></html>`;
+      const fallback=JSON.stringify(sampleData).replace(/<\/script/gi,"<\\/script");
+      return `<!doctype html><html><head><base href="${document.baseURI}"><style>html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif;background:#f2f2f2}body{display:grid;place-items:center;overflow:auto;padding:12px}canvas{max-width:100%;height:auto!important;background:#fff;box-shadow:0 2px 10px #0002}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><script>window.USE_SAMPLE_DATA=${useSample};window.SAMPLE_DATA=${fallback};const format=x=>{try{return typeof x==='object'?JSON.stringify(x):String(x)}catch{return String(x)}},send=(level,a)=>parent.postMessage({source:'lab7-p5-demo',level,text:a.map(format).join(' ')},'*');['log','warn','error'].forEach(level=>{const old=console[level];console[level]=(...a)=>{send(level,a);old(...a)}});addEventListener('error',e=>send('error',['✗',e.message]));addEventListener('unhandledrejection',e=>send('error',['✗',e.reason]));send('log',['Starting p5.js…']);${safe}<\/script></body></html>`;
     }
 
     const deck=document.querySelector('#deck');
@@ -174,6 +186,7 @@ function setup() {
     const full=document.querySelector('#full');
     let n=Math.max(0,Math.min(slides.length-1,(Number(location.hash.slice(1))||1)-1));
     let timerId;
+    let demoMessageHandler;
 
     function setupQuiz(){
       document.querySelectorAll('.choice').forEach(button=>{
@@ -227,18 +240,52 @@ function setup() {
       const preview=document.querySelector('#preview');
       const live=document.querySelector('#liveSource');
       const sample=document.querySelector('#sampleSource');
+      const output=document.querySelector('#demoConsole');
+      const lineNumbers=document.querySelector('#lineNumbers');
+      const autoRefresh=document.querySelector('#autoRefresh');
       let useSample=false;
+      let refreshId;
       editor.value=apiDemoCode;
-      const run=()=>{preview.srcdoc=demoDoc(editor.value,useSample)};
+      const updateLines=()=>{lineNumbers.textContent=editor.value.split('\n').map((_,index)=>index+1).join('\n')};
+      const run=()=>{
+        output.textContent=`Running with ${useSample?'sample data':'the live API'}…`;
+        preview.srcdoc=demoDoc(editor.value,useSample);
+      };
+      const stop=()=>{
+        preview.srcdoc='<!doctype html><html><body style="margin:0;background:#f2f2f2"></body></html>';
+        output.textContent+='\n■ Sketch stopped.';
+      };
       const selectSource=value=>{
         useSample=value;
         live.classList.toggle('active',!value);
         sample.classList.toggle('active',value);
         run();
       };
+      demoMessageHandler=event=>{
+        if(event.source!==preview.contentWindow||event.data?.source!=='lab7-p5-demo')return;
+        const prefix=event.data.level==='error'?'✗ ':event.data.level==='warn'?'⚠ ':'';
+        output.textContent+='\n'+prefix+event.data.text;
+        output.scrollTop=output.scrollHeight;
+      };
+      addEventListener('message',demoMessageHandler);
       live.addEventListener('click',()=>selectSource(false));
       sample.addEventListener('click',()=>selectSource(true));
       document.querySelector('#runCode').addEventListener('click',run);
+      document.querySelector('#stopCode').addEventListener('click',stop);
+      document.querySelector('#clearConsole').addEventListener('click',()=>{output.textContent='Console cleared.'});
+      editor.addEventListener('scroll',()=>{lineNumbers.scrollTop=editor.scrollTop});
+      editor.addEventListener('input',()=>{
+        updateLines();
+        if(autoRefresh.checked){clearTimeout(refreshId);refreshId=setTimeout(run,500)}
+      });
+      editor.addEventListener('keydown',event=>{
+        if(event.key!=='Tab')return;
+        event.preventDefault();
+        const start=editor.selectionStart;
+        editor.setRangeText('  ',start,editor.selectionEnd,'end');
+        updateLines();
+      });
+      updateLines();
       run();
     }
 
@@ -256,6 +303,7 @@ function setup() {
 
     function show(index){
       clearInterval(timerId);
+      if(demoMessageHandler){removeEventListener('message',demoMessageHandler);demoMessageHandler=null}
       n=(index+slides.length)%slides.length;
       const slide=slides[n];
       deck.innerHTML=`<section class="slide ${slide.dark?'dark':''}"><div class="eye">${slide.eye}</div>${slide.time?`<div class="time">${slide.time}</div>`:''}${slide.body}${slide.timer?`<div class="timer"><strong id="timerReadout"></strong><button id="timerToggle" type="button">Start</button><button id="timerReset" type="button">Reset</button></div>`:''}<span class="page">${n+1}</span></section>`;
