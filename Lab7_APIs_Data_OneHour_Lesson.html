@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lab 7 | APIs, Data, and Visual Mapping</title>
+  <style>
+    :root{--p:#ff3b82;--pink:#ffe0eb;--bg:#fff7fa;--ink:#171317;--muted:#6f6269;--green:#15803d;--blue:#2563eb;--amber:#b45309}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Inter,Arial,sans-serif;background:#0b0b0b;color:var(--ink)}body{display:grid;grid-template-rows:1fr 62px;overflow:hidden}
+    button,textarea,input{font:inherit}.slide{height:calc(100vh - 62px);padding:34px 52px;background:var(--bg);overflow:auto;position:relative}.dark{background:#101010;color:#fff}
+    .eye{color:var(--p);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.time{position:absolute;right:52px;top:28px;background:var(--pink);color:#9d174d;border-radius:99px;padding:7px 13px;font-weight:800}.dark .time{background:#351521;color:#ffa0c3}
+    h1{font:800 58px/1.03 Georgia,serif;margin:25px 0 15px}h2{font:800 38px/1.1 Georgia,serif;margin:10px 0 18px}h3{margin:0 0 7px}p,li{font-size:18px;line-height:1.42;color:var(--muted)}.dark p,.dark li{color:#d6ccd1}.lead{font-size:23px;max-width:900px}.small{font-size:14px}.center{text-align:center}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid #ead9e0;border-radius:12px;padding:17px}.dark .card,.dark .prompt{background:#25141c;border-color:#4a2936}
+    .prompt{background:#fff;border-left:6px solid var(--p);border-radius:8px;padding:14px 17px;margin-top:13px}.tag{display:inline-block;background:#111;color:#fff;border-radius:7px;padding:7px 11px;margin:0 6px 10px 0;font-size:14px;font-weight:900}.tag.hard{background:#9d174d}.tag.green{background:var(--green)}
+    code{font-family:ui-monospace,monospace}.code{white-space:pre-wrap;background:#111;color:#f8f8f2;padding:16px;border-radius:10px;font:15px/1.38 ui-monospace,monospace;margin:0;overflow:auto}.code .pink{color:#ff8db5}.code .gold{color:#fde68a}.code .blue{color:#93c5fd}
+    .nav{display:flex;align-items:center;justify-content:center;gap:10px;background:#111}.nav button,.nav a{padding:9px 15px;border:1px solid #603447;border-radius:99px;background:#1d1519;color:#fff;text-decoration:none;cursor:pointer}.nav button:hover,.nav a:hover,.nav button:focus-visible,.nav a:focus-visible{border-color:var(--p)}#count{min-width:78px;text-align:center;color:#e6ccd6}.page{position:absolute;right:24px;bottom:13px;color:#a9959e;font-size:12px}
+    .pipeline{display:grid;grid-template-columns:repeat(7,1fr);gap:22px;margin:30px 0}.step{position:relative;min-height:126px;padding:18px 10px;border:1px solid #ead9e0;border-radius:12px;background:#fff;text-align:center}.step:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:43px;color:var(--p);font-size:25px;font-weight:900}.step b{display:block;margin-top:9px}.step span{color:var(--p);font:900 25px Georgia,serif}
+    .detective{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:center}.viz{height:370px;border-radius:16px;background:#1a1023;overflow:hidden;display:grid;place-items:center}.viz svg{width:100%;height:100%}.choices{display:grid;gap:10px}.choice{padding:13px 15px;text-align:left;border:2px solid #ead9e0;border-radius:11px;background:#fff;font-size:17px;cursor:pointer}.choice:hover{border-color:var(--p)}.choice.correct{border-color:var(--green);background:#ecfdf3}.choice.wrong{border-color:#dc2626;background:#fff1f2}.feedback{min-height:54px;margin-top:12px;padding:12px 14px;border-radius:9px;background:#fff}.feedback.good{border-left:5px solid var(--green)}.feedback.try{border-left:5px solid #dc2626}
+    .path{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}.path span{padding:10px 13px;border-radius:8px;background:#111;color:#fff;font:800 18px ui-monospace,monospace}.path i{color:var(--p);font-size:24px;font-style:normal;font-weight:900}
+    .mapping{display:grid;grid-template-columns:1fr auto 1fr;gap:15px;align-items:center;margin:10px 0}.mapping .field,.mapping .property{padding:14px;border-radius:10px;font-weight:800}.mapping .field{background:#dbeafe;color:#1e40af}.mapping .property{background:#fce7f3;color:#9d174d}.mapping .arrow{font-size:24px;color:var(--p)}
+    .demo{display:grid;grid-template-columns:1.08fr .92fr;gap:14px;height:510px}.editor{display:flex;flex-direction:column;min-height:0}.editor textarea{flex:1;resize:none;border:0;border-radius:10px 10px 0 0;background:#111;color:#f8f8f2;padding:15px;font:13px/1.34 ui-monospace,monospace;tab-size:2}.demo-controls{display:flex;gap:7px;padding:9px;background:#20151a;border-radius:0 0 10px 10px}.run,.source-btn,.reveal,.copy{border:0;border-radius:8px;padding:10px 13px;background:var(--p);color:#fff;font-weight:900;cursor:pointer}.source-btn{background:#442432}.source-btn.active{outline:2px solid #ff9fc1;background:#713047}.run{margin-left:auto}.preview{width:100%;height:100%;border:1px solid #ead9e0;border-radius:10px;background:#fff}.tiny{font-size:14px;margin:0 0 9px}
+    .timer{position:absolute;left:52px;bottom:13px;display:flex;align-items:center;gap:8px;padding:8px 11px;background:#111;color:#fff;border-radius:10px}.timer strong{min-width:58px;color:#ff8db5;font:900 22px/1 ui-monospace}.timer button{background:#29151e;color:#fff;border:1px solid #684052;border-radius:7px;padding:6px 9px}.reveal{margin-top:13px}.answer{display:none;margin-top:12px;padding:14px 17px;border-left:6px solid var(--green);border-radius:8px;background:#ecfdf3;color:#214b31}.answer.show{display:block}.dark .answer{background:#153522;color:#dcfce7}
+    .checklist{list-style:none;padding:0}.checklist li{position:relative;padding:8px 0 8px 34px}.checklist li::before{content:"□";position:absolute;left:0;color:var(--p);font-size:24px;line-height:1}.debug-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.debug-flow div{padding:17px;border-radius:11px;background:#fff;border-top:5px solid var(--p)}.debug-flow b{display:block;margin-bottom:7px}.response{display:grid;gap:10px}.response label{font-weight:800}.response input{width:100%;padding:11px 12px;border:2px solid #ead9e0;border-radius:9px;background:#fff}.response input:focus{outline:2px solid #ff8db5;border-color:var(--p)}#copyStatus{min-height:24px;color:#166534;font-weight:800}
+    .download{color:#9d174d;font-weight:800}.dark .download{color:#ff9fc1}.legend{display:flex;gap:18px;justify-content:center;color:#dccdd4;font-size:14px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}
+    @media(max-width:1000px){.pipeline{grid-template-columns:repeat(4,1fr)}.step::after{display:none}.debug-flow{grid-template-columns:1fr 1fr}}
+    @media(max-width:900px){.slide{padding:24px 22px}.grid,.cards,.detective,.demo{grid-template-columns:1fr}.demo{height:auto}.editor textarea,.preview{min-height:340px}.viz{height:280px}.time{right:22px;top:20px}h1{font-size:42px}h2{font-size:30px}.nav a{display:none}.timer{left:22px}.pipeline{grid-template-columns:1fr 1fr}.mapping{grid-template-columns:1fr}.mapping .arrow{transform:rotate(90deg);text-align:center}}
+    html:fullscreen body{grid-template-rows:1fr}html:fullscreen .nav{display:none}html:fullscreen .slide{height:100vh}
+  </style>
+</head>
+<body>
+  <main id="deck"></main>
+  <nav class="nav" aria-label="Slide navigation">
+    <a href="index.html">← Home</a>
+    <button id="prev" type="button">← Previous</button>
+    <span id="count" aria-live="polite"></span>
+    <button id="next" type="button">Next →</button>
+    <button id="full" type="button">Full screen</button>
+  </nav>
+  <script>
+    const sampleData={docs:[
+      {title:"The Creative Coding Handbook",first_publish_year:2018,edition_count:7},
+      {title:"Generative Design",first_publish_year:2009,edition_count:14},
+      {title:"Make: Getting Started with p5.js",first_publish_year:2015,edition_count:9},
+      {title:"The Nature of Code",first_publish_year:2012,edition_count:12},
+      {title:"Coding Art",first_publish_year:2021,edition_count:5},
+      {title:"Creative Coding in Python",first_publish_year:2019,edition_count:4}
+    ]};
+
+    const apiDemoCode=`let libraryData;
+const API_URL = "https://openlibrary.org/search.json?q=creative+coding&fields=key,title,first_publish_year,edition_count&limit=8";
+const sampleData = ${JSON.stringify(sampleData,null,2)};
+
+function preload() {
+  if (window.USE_SAMPLE_DATA) {
+    libraryData = sampleData;
+    console.log("Sample data:", libraryData);
+    return;
+  }
+
+  libraryData = loadJSON(
+    API_URL,
+    data => console.log("Open Library response:", data),
+    error => {
+      console.warn("API unavailable — using sample data.");
+      libraryData = sampleData;
+    }
+  );
+}
+
+function setup() {
+  createCanvas(620, 390);
+  textFont("Arial");
+  console.log("Is it an array?", Array.isArray(libraryData));
+  console.log("The records live at libraryData.docs");
+  noLoop();
+}
+
+function draw() {
+  background(25, 16, 35);
+  fill(255);
+  textSize(14);
+  text("publication year → x     edition count → size", 18, 25);
+
+  for (let i = 0; i < libraryData.docs.length; i++) {
+    const book = libraryData.docs[i];
+    const x = map(book.first_publish_year, 1900, 2026, 55, width - 55, true);
+    const size = map(book.edition_count, 0, 80, 24, 105, true);
+    const y = 80 + (i % 3) * 125;
+
+    noStroke();
+    fill(255, 59, 130, 190);
+    circle(x, y, size);
+    fill(255);
+    textSize(11);
+    text(book.title.slice(0, 24), x - 38, y + size / 2 + 15, 90);
+  }
+}`;
+
+    const detectiveArt=`<svg viewBox="0 0 760 410" role="img" aria-label="Six books shown as circles at different horizontal positions and sizes"><rect width="760" height="410" fill="#1a1023"/><g stroke="#4b3858" stroke-width="2"><path d="M70 350H700"/><path d="M100 345V355M250 345V355M400 345V355M550 345V355M700 345V355"/></g><g fill="#dccdd4" font-family="Arial" font-size="14" text-anchor="middle"><text x="100" y="378">1990</text><text x="250" y="378">2000</text><text x="400" y="378">2010</text><text x="550" y="378">2020</text><text x="700" y="378">2030</text></g><g fill="#ff3b82" fill-opacity=".82" stroke="#ff9fc1" stroke-width="3"><circle cx="205" cy="125" r="31"/><circle cx="380" cy="125" r="57"/><circle cx="520" cy="125" r="24"/><circle cx="315" cy="265" r="40"/><circle cx="565" cy="265" r="68"/><circle cx="660" cy="265" r="29"/></g><g fill="#fff" font-family="Arial" font-size="14" font-weight="700" text-anchor="middle"><text x="205" y="130">A</text><text x="380" y="130">B</text><text x="520" y="130">C</text><text x="315" y="270">D</text><text x="565" y="270">E</text><text x="660" y="270">F</text></g></svg>`;
+
+    const slides=[
+      {dark:1,eye:"Georgia Tech · Lab 7",body:`<h1>APIs, Data, and<br>Visual Mapping</h1><p class="lead">Today, data replaces the mouse: a field becomes position, size, color, or motion.</p><div class="cards"><div class="card"><h3>50 minutes</h3><p>Detect → inspect → map → build → explain</p></div><div class="card"><h3>Technical goal</h3><p>Find and access the field you need.</p></div><div class="card"><h3>Communication goal</h3><p>Make one mapping that says something.</p></div></div>`},
+      {eye:"Data Mapping Detective · Opening",time:"4 minutes total",quiz:1,body:`<h2>What controls each circle’s size?</h2><div class="detective"><div class="viz">${detectiveArt}</div><div><div class="choices"><button class="choice" data-ok="0">The book title</button><button class="choice" data-ok="1">The number of editions</button><button class="choice" data-ok="0">The publication year</button></div><div class="feedback">Make a claim from the visual evidence. What might the x-position mean?</div></div></div>`},
+      {eye:"Data Mapping Detective · Reveal",reveal:1,body:`<h2>Reverse-engineer the visual rules</h2><div class="mapping"><div class="field"><code>first_publish_year</code></div><div class="arrow">→</div><div class="property">x position</div><div class="field"><code>edition_count</code></div><div class="arrow">→</div><div class="property">circle size</div><div class="field"><code>title</code></div><div class="arrow">→</div><div class="property">text label</div></div><button class="reveal">Reveal the communication claim</button><div class="answer"><strong>Claim:</strong> larger circles suggest books with more editions, while the horizontal position helps us compare publication dates. The visual rules turn fields into evidence—not decoration.</div>`},
+      {eye:"Assignment Framing",time:"2 minutes",body:`<h2>Build a small data-driven sketch</h2><div class="grid"><div class="card"><h3>Your sketch must</h3><ul class="checklist"><li>Load JSON or CSV data.</li><li>Log and inspect before drawing.</li><li>Access at least one repeated record.</li><li>Map a field to a visual property.</li></ul></div><div class="card"><h3>Your explanation must finish</h3><div class="prompt"><strong>“This data field controls this visual property because…”</strong></div><p class="small">Today’s boundary: no authentication, POST requests, Promises, advanced <code>fetch()</code>, or data-cleaning pipelines.</p></div></div>`},
+      {eye:"Mental Model",time:"3 minutes",body:`<h2>From source to visual meaning</h2><div class="pipeline"><div class="step"><span>1</span><b>Source</b><small>API / CSV</small></div><div class="step"><span>2</span><b>Load</b><small>loadJSON / loadTable</small></div><div class="step"><span>3</span><b>Log + look</b><small>console</small></div><div class="step"><span>4</span><b>Access</b><small>docs[i].field</small></div><div class="step"><span>5</span><b>Map</b><small>input → range</small></div><div class="step"><span>6</span><b>Draw</b><small>shape / text</small></div><div class="step"><span>7</span><b>Explain</b><small>why it matters</small></div></div><div class="prompt"><strong>Memory phrase:</strong> load → log → look → access → map → draw.</div>`},
+      {eye:"Choose the Loader",body:`<h2>Two sources, two p5.js loaders</h2><div class="grid"><div class="card"><span class="tag">JSON / API</span><pre class="code">let data;
+function preload() {
+  data = loadJSON(apiUrl);
+}</pre><p>Often contains objects, arrays, and nested fields.</p></div><div class="card"><span class="tag">CSV</span><pre class="code">let table;
+function preload() {
+  table = loadTable(
+    "weather.csv", "csv", "header"
+  );
+}</pre><p>Rows and columns. Access with <code>getNum()</code> or <code>getString()</code>.</p></div></div>`},
+      {eye:"Inspect Before You Visualize",time:"3 minutes",quiz:1,body:`<h2>Where is the first book title?</h2><div class="grid"><pre class="code">{
+  "numFound": 542,
+  "docs": [
+    {
+      "title": "Creative Coding",
+      "first_publish_year": 2018,
+      "edition_count": 7
+    }
+  ]
+}</pre><div><div class="choices"><button class="choice" data-ok="0"><code>data.title</code></button><button class="choice" data-ok="0"><code>data[0].title</code></button><button class="choice" data-ok="1"><code>data.docs[0].title</code></button></div><div class="feedback">Read one level at a time: object → array → first object → field.</div></div></div>`},
+      {eye:"Access Pattern",body:`<h2>Read the path one step at a time</h2><div class="path"><span>data</span><i>→</i><span>.docs</span><i>→</i><span>[i]</span><i>→</i><span>.edition_count</span></div><div class="cards"><div class="card"><h3><code>data</code></h3><p>The whole response object.</p></div><div class="card"><h3><code>.docs[i]</code></h3><p>One book inside the array.</p></div><div class="card"><h3><code>.edition_count</code></h3><p>One number ready to map.</p></div></div><div class="prompt"><strong>Technical checkpoint:</strong> If a value is <code>undefined</code>, log the parent object and inspect its exact shape.</div>`},
+      {eye:"Meaningful Mapping",time:"3 minutes",reveal:1,body:`<h2>A working mapping is not automatically a useful one</h2><div class="grid"><div class="card"><h3>Defensible choices</h3><ul><li>More editions → larger circle</li><li>Earlier year → farther left</li><li>Higher temperature → warmer color</li><li>More rainfall → denser marks</li></ul></div><div class="card"><h3>Ask before coding</h3><p>What comparison should viewers make?</p><p>Does the visual property reinforce that comparison?</p><p>Can I explain the rule in one sentence?</p></div></div><button class="reveal">Reveal the test</button><div class="answer"><strong>The “because” test:</strong> If you cannot finish “field → property because…”, the mapping may be arbitrary.</div>`},
+      {eye:"Open Library · Predict Before Run",time:"2 minutes",body:`<h2>Predict the output before opening the demo</h2><div class="grid"><pre class="code">const x = map(
+  book.first_publish_year,
+  1900, 2026,
+  55, width - 55,
+  true
+);
+
+const size = map(
+  book.edition_count,
+  0, 80,
+  24, 105,
+  true
+);</pre><div class="card"><h3>Turn and talk</h3><p>Where should a book from 1910 appear?</p><p>Which book receives the largest circle?</p><p>What does the final <code>true</code> do?</p></div></div>`},
+      {eye:"Open Library · Live API + Fallback",time:"6 minutes",demo:1,body:`<h2>Edit one range, predict, then run</h2><p class="tiny">Try changing circle size from <code>24, 105</code> to <code>8, 160</code>. Use the sample button to rehearse without network access.</p><div class="demo"><div class="editor"><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js code"></textarea><div class="demo-controls"><button class="source-btn active" id="liveSource" type="button">Live API</button><button class="source-btn" id="sampleSource" type="button">Sample fallback</button><button class="run" id="runCode" type="button">Run code</button></div></div><iframe class="preview" id="preview" title="p5.js data visualization preview"></iframe></div>`},
+      {dark:1,eye:"Guided Mapping Practice",time:"5 minutes",timer:300,body:`<h2>Make three intentional changes</h2><div class="cards"><div class="card"><h3>1 · Access</h3><p>Change the label from <code>title</code> to <code>first_publish_year</code>.</p></div><div class="card"><h3>2 · Map</h3><p>Change the output range for size or x-position.</p></div><div class="card"><h3>3 · Explain</h3><p>Finish: “I mapped ___ to ___ because ___.”</p></div></div><div class="prompt"><strong>Pair checkpoint:</strong> Point to the exact <code>docs[i].field</code> path and the exact visual property it controls.</div>`},
+      {eye:"Debugging Clinic",time:"3 minutes",body:`<h2>Use evidence; do not guess randomly</h2><div class="debug-flow"><div><b>1 · Did it load?</b><span>Read the console and status.</span></div><div><b>2 · What shape?</b><span>Log the whole response.</span></div><div><b>3 · What path?</b><span>Expand objects and arrays.</span></div><div><b>4 · What value?</b><span>Log one field before <code>map()</code>.</span></div></div><div class="grid" style="margin-top:18px"><pre class="code">console.log(data);
+console.log(data.docs);
+console.log(data.docs[0]);
+console.log(data.docs[0].edition_count);</pre><div class="card"><h3>Common symptoms</h3><ul><li><code>undefined</code> → wrong path or field name</li><li>blank canvas → inspect console first</li><li>all marks overlap → check mapped input values</li><li>API error → switch to the sample</li></ul></div></div>`},
+      {eye:"CSV Transfer · loadTable()",body:`<h2>The mental model stays the same</h2><div class="grid"><pre class="code">let weather;
+function preload() {
+  weather = loadTable(
+    "weather.csv", "csv", "header"
+  );
+}
+
+function setup() {
+  console.log(weather);
+  const temp = weather.getNum(0, "temperature");
+  const size = map(temp, 30, 100, 10, 120);
+}</pre><div class="card"><h3>Translate the pattern</h3><div class="mapping"><div class="field">temperature</div><div class="arrow">→</div><div class="property">circle size</div></div><p>Only the access syntax changes. The questions—what value, what range, what meaning—stay the same.</p></div></div>`},
+      {dark:1,eye:"Student Build Sprint",time:"18 minutes",timer:1080,body:`<h2>Build one clear data story</h2><div class="cards"><div class="card"><h3>0–5 min · Load + inspect</h3><p>Confirm the data and write down the field path.</p></div><div class="card"><h3>5–12 min · Access + map</h3><p>Draw repeated marks and tune the ranges.</p></div><div class="card"><h3>12–18 min · Explain + test</h3><p>Check a partner can infer your visual rule.</p></div></div><div class="prompt"><strong>Done means:</strong> data loads, the console proves the path, a field visibly controls a property, and your “because” sentence is specific.</div>`},
+      {eye:"Guess My Mapping · Closer",time:"2 minutes",timer:120,body:`<h2>Show the visual. Hide the code.</h2><div class="cards"><div class="card"><h3>Viewer</h3><p>Guess the data field.</p></div><div class="card"><h3>Viewer</h3><p>Guess the visual property.</p></div><div class="card"><h3>Maker</h3><p>Reveal the rule and the reason.</p></div></div><div class="prompt"><strong>Listen for:</strong> “I think ___ controls ___ because I notice ___.”</div>`},
+      {dark:1,eye:"Exit Ticket",time:"2 minutes",exit:1,body:`<h2>Complete the data-to-visual chain</h2><div class="grid"><div class="response"><label for="fieldAnswer">1. My data field is…</label><input id="fieldAnswer" placeholder="edition_count"><label for="visualAnswer">2. It controls…</label><input id="visualAnswer" placeholder="circle size"><label for="becauseAnswer">3. This is meaningful because…</label><input id="becauseAnswer" placeholder="viewers can compare how widely books were published"><button class="copy" id="copyExit" type="button">Copy my exit ticket</button><div id="copyStatus" aria-live="polite"></div></div><div><div class="prompt"><strong>One last debugging habit:</strong><br>Before drawing, I will <strong>load → log → look</strong>.</div><p class="small">Then: access → map → draw → explain.</p></div></div>`},
+      {dark:1,eye:"Lab 7 · Recap",body:`<h1>Data controls the visual.</h1><div class="path"><span>source</span><i>→</i><span>inspect</span><i>→</i><span>field</span><i>→</i><span>property</span><i>→</i><span>meaning</span></div><p class="lead center">Your job is not only to make the code run. Your job is to make the mapping readable.</p><p class="center"><a class="download" href="assets/lab7/open-library-sample.json" download>Download the classroom sample JSON</a></p>`}
+    ];
+
+    function demoDoc(code,useSample){
+      const safe=code.replace(/<\/script/gi,"<\\/script");
+      return `<!doctype html><html><head><base href="${document.baseURI}"><style>html,body{margin:0;font:13px ui-monospace}body{height:100vh;display:flex;flex-direction:column;overflow:hidden}canvas{max-width:100%;height:auto!important}section{flex:1;min-height:112px;overflow:auto;background:#111;color:#ddd;padding:9px 12px}b{color:#ff6fa8}pre{white-space:pre-wrap}.mode{float:right;color:#fde68a}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><section><b>Console</b><span class="mode">${useSample?'SAMPLE FALLBACK':'LIVE API → SAMPLE ON ERROR'}</span><pre id="log">Starting p5.js…</pre></section><script>window.USE_SAMPLE_DATA=${useSample};const el=document.querySelector('#log'),format=x=>{try{return typeof x==='object'?JSON.stringify(x,null,2):String(x)}catch{return String(x)}},write=a=>{el.textContent+='\\n'+a.map(format).join(' ')};['log','warn','error'].forEach(level=>{const old=console[level];console[level]=(...a)=>{write(a);old(...a)}});addEventListener('error',e=>write(['✗',e.message]));addEventListener('unhandledrejection',e=>write(['✗',e.reason]));${safe}<\/script></body></html>`;
+    }
+
+    const deck=document.querySelector('#deck');
+    const count=document.querySelector('#count');
+    const prev=document.querySelector('#prev');
+    const next=document.querySelector('#next');
+    const full=document.querySelector('#full');
+    let n=Math.max(0,Math.min(slides.length-1,(Number(location.hash.slice(1))||1)-1));
+    let timerId;
+
+    function setupQuiz(){
+      document.querySelectorAll('.choice').forEach(button=>{
+        button.addEventListener('click',()=>{
+          const correct=button.dataset.ok==='1';
+          const feedback=document.querySelector('.feedback');
+          document.querySelectorAll('.choice').forEach(item=>item.classList.remove('correct','wrong'));
+          button.classList.add(correct?'correct':'wrong');
+          feedback.className='feedback '+(correct?'good':'try');
+          feedback.textContent=correct?'✓ Yes. Now explain what visual evidence supports that mapping.':'Try again—follow the object, array index, and field, or compare what visibly changes.';
+        });
+      });
+    }
+
+    function setupReveals(){
+      document.querySelectorAll('.reveal').forEach(button=>{
+        button.addEventListener('click',()=>{
+          const answer=button.nextElementSibling;
+          const open=answer.classList.toggle('show');
+          button.textContent=open?'Hide answer':'Reveal answer';
+        });
+      });
+    }
+
+    function setupTimer(total){
+      clearInterval(timerId);
+      let left=total;
+      let running=false;
+      const out=document.querySelector('#timerReadout');
+      const toggle=document.querySelector('#timerToggle');
+      const reset=document.querySelector('#timerReset');
+      const paint=()=>{out.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0')};
+      toggle.addEventListener('click',()=>{
+        running=!running;
+        toggle.textContent=running?'Pause':'Resume';
+        clearInterval(timerId);
+        if(running){
+          timerId=setInterval(()=>{
+            left=Math.max(0,left-1);
+            paint();
+            if(left===0){clearInterval(timerId);running=false;toggle.textContent='Done'}
+          },1000);
+        }
+      });
+      reset.addEventListener('click',()=>{clearInterval(timerId);running=false;left=total;toggle.textContent='Start';paint()});
+      paint();
+    }
+
+    function setupDemo(){
+      const editor=document.querySelector('#codeEditor');
+      const preview=document.querySelector('#preview');
+      const live=document.querySelector('#liveSource');
+      const sample=document.querySelector('#sampleSource');
+      let useSample=false;
+      editor.value=apiDemoCode;
+      const run=()=>{preview.srcdoc=demoDoc(editor.value,useSample)};
+      const selectSource=value=>{
+        useSample=value;
+        live.classList.toggle('active',!value);
+        sample.classList.toggle('active',value);
+        run();
+      };
+      live.addEventListener('click',()=>selectSource(false));
+      sample.addEventListener('click',()=>selectSource(true));
+      document.querySelector('#runCode').addEventListener('click',run);
+      run();
+    }
+
+    function setupExit(){
+      document.querySelector('#copyExit').addEventListener('click',async()=>{
+        const field=document.querySelector('#fieldAnswer').value.trim()||'[field]';
+        const visual=document.querySelector('#visualAnswer').value.trim()||'[visual property]';
+        const because=document.querySelector('#becauseAnswer').value.trim()||'[reason]';
+        const answer=`My data field is ${field}. It controls ${visual}. This is meaningful because ${because}.`;
+        const status=document.querySelector('#copyStatus');
+        try{await navigator.clipboard.writeText(answer);status.textContent='✓ Copied.'}
+        catch{status.textContent='Copy unavailable here—select your three answers manually.'}
+      });
+    }
+
+    function show(index){
+      clearInterval(timerId);
+      n=(index+slides.length)%slides.length;
+      const slide=slides[n];
+      deck.innerHTML=`<section class="slide ${slide.dark?'dark':''}"><div class="eye">${slide.eye}</div>${slide.time?`<div class="time">${slide.time}</div>`:''}${slide.body}${slide.timer?`<div class="timer"><strong id="timerReadout"></strong><button id="timerToggle" type="button">Start</button><button id="timerReset" type="button">Reset</button></div>`:''}<span class="page">${n+1}</span></section>`;
+      count.textContent=`${n+1} / ${slides.length}`;
+      history.replaceState(null,'',`#${n+1}`);
+      if(slide.quiz)setupQuiz();
+      if(slide.reveal)setupReveals();
+      if(slide.timer)setupTimer(slide.timer);
+      if(slide.demo)setupDemo();
+      if(slide.exit)setupExit();
+    }
+
+    prev.addEventListener('click',()=>show(n-1));
+    next.addEventListener('click',()=>show(n+1));
+    full.addEventListener('click',()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.());
+    addEventListener('keydown',event=>{
+      if(['INPUT','TEXTAREA','BUTTON','A'].includes(event.target.tagName))return;
+      if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(n+1)}
+      if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(n-1)}
+    });
+    addEventListener('hashchange',()=>{const target=Number(location.hash.slice(1));if(target&&target!==n+1)show(target-1)});
+    show(n);
+  </script>
+</body>
+</html>
