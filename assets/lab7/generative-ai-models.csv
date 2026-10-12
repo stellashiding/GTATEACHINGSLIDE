@@ -1,7 +1,6 @@
-model,organization,release_year,parameters_b
-GPT-2,OpenAI,2019,1.5
-Gemma 2B,Google,2024,2
-Mistral 7B,Mistral AI,2023,7
-Llama 3 8B,Meta,2024,8
-Gemma 2 27B,Google,2024,27
-Llama 2 70B,Meta,2023,70
+model,organization,release_month,context_window_k
+Gemini 1.5 Pro,Google,2,2000
+GPT-4o,OpenAI,5,128
+Claude 3.5 Sonnet,Anthropic,6,200
+Llama 3.1,Meta,7,128
+Qwen 2.5,Alibaba,9,128
