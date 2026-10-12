@@ -18,7 +18,7 @@
     .detective{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:center}.viz{height:370px;border-radius:16px;background:#1a1023;overflow:hidden;display:grid;place-items:center}.viz svg{width:100%;height:100%}.choices{display:grid;gap:10px}.choice{padding:13px 15px;text-align:left;border:2px solid #ead9e0;border-radius:11px;background:#fff;font-size:17px;cursor:pointer}.choice:hover{border-color:var(--p)}.choice.correct{border-color:var(--green);background:#ecfdf3}.choice.wrong{border-color:#dc2626;background:#fff1f2}.feedback{min-height:54px;margin-top:12px;padding:12px 14px;border-radius:9px;background:#fff}.feedback.good{border-left:5px solid var(--green)}.feedback.try{border-left:5px solid #dc2626}
     .path{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}.path span{padding:10px 13px;border-radius:8px;background:#111;color:#fff;font:800 18px ui-monospace,monospace}.path i{color:var(--p);font-size:24px;font-style:normal;font-weight:900}
     .mapping{display:grid;grid-template-columns:1fr auto 1fr;gap:15px;align-items:center;margin:10px 0}.mapping .field,.mapping .property{padding:14px;border-radius:10px;font-weight:800}.mapping .field{background:#dbeafe;color:#1e40af}.mapping .property{background:#fce7f3;color:#9d174d}.mapping .arrow{font-size:24px;color:var(--p)}
-    .p5-shell{height:500px;border:1px solid #b9b9b9;background:#f4f4f4;box-shadow:0 8px 24px #31101b24;overflow:hidden;font-family:Arial,sans-serif}.p5-menu{height:32px;display:flex;align-items:center;gap:19px;border-bottom:1px dashed #bbb;background:#fafafa;color:#4b4b4b;font-size:12px}.p5-logo{align-self:stretch;display:grid;place-items:center;width:45px;background:#ed225d;color:#fff;font:900 17px/1 Arial}.p5-menu span:not(.p5-logo)::after{content:" ▾";font-size:9px;color:#777}.p5-toolbar{height:54px;display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:1px solid #c8c8c8;background:#f7f7f7}.p5-action{width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:50%;background:#ddd;cursor:pointer}.p5-action:hover,.p5-action:focus-visible{outline:3px solid #f8a6be}.p5-action.stop{background:#ed225d}.play-icon{width:0;height:0;margin-left:3px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid #333}.stop-icon{width:14px;height:14px;background:#fff}.auto-refresh{display:flex;align-items:center;gap:5px;color:#555;font-size:12px}.sketch-name{margin-left:8px;color:#444;font-size:13px}.p5-version{margin-left:auto;padding:5px 9px;border-radius:13px;background:#ddd;color:#555;font-size:11px}.p5-workspace{display:grid;grid-template-columns:118px minmax(0,1.05fr) minmax(0,.95fr);height:414px;min-height:0}.p5-files{min-height:0;overflow:hidden;border-right:1px solid #c7c7c7;background:#f3f3f3;color:#555;font-size:12px}.p5-files h3{margin:0;padding:10px;border-bottom:1px solid #ccc;font-size:12px}.file-item{padding:7px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-item.active{background:#ddd;color:#111;font-weight:800}.file-item::before{content:"▱";margin-right:6px;color:#777}.file-item.active::before{content:"◆";color:#ed225d;font-size:8px}.p5-code-column{display:grid;grid-template-rows:minmax(0,1fr) 104px;min-width:0;min-height:0;height:100%;overflow:hidden;border-right:1px solid #c7c7c7}.editor-pane{display:flex;flex-direction:column;min-height:0;overflow:hidden}.pane-head{height:30px;flex:0 0 30px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid #ccc;background:#f5f5f5;color:#555;font-size:12px}.pane-head strong{color:#333}.code-wrap{display:grid;grid-template-columns:42px 1fr;min-height:0;overflow:hidden;flex:1;background:#fff}.line-numbers{height:100%;margin:0;padding:10px 8px;border-right:1px solid #ddd;overflow:hidden;background:#f6f6f6;color:#999;text-align:right;font:12px/1.42 ui-monospace,monospace;user-select:none}.code-wrap textarea{width:100%;height:100%;min-height:0;resize:none;border:0;outline:0;padding:10px 12px;background:#fff;color:#252525;font:12px/1.42 ui-monospace,monospace;tab-size:2;white-space:pre}.p5-console{display:flex;flex-direction:column;min-height:0;overflow:hidden;border-top:1px solid #bbb;background:#f1f1f1}.console-head{height:27px;flex:0 0 27px;display:flex;align-items:center;padding:0 9px;background:#d9d9d9;color:#333;font-size:12px}.console-head button{margin-left:auto;border:0;background:transparent;color:#555;font-size:11px;cursor:pointer}.console-output{flex:1;margin:0;padding:7px 10px;overflow:auto;color:#333;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap}.preview-column{display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;overflow:hidden;background:#fff}.preview{flex:1;width:100%;min-height:0;border:0;background:#f2f2f2}.demo-note{font-size:14px;margin:0 0 9px}.reveal,.copy{border:0;border-radius:8px;padding:10px 13px;background:var(--p);color:#fff;font-weight:900;cursor:pointer}
+    .p5-shell{height:500px;border:1px solid #b9b9b9;background:#f4f4f4;box-shadow:0 8px 24px #31101b24;overflow:hidden;font-family:Arial,sans-serif;position:relative}.p5-menu{height:32px;display:flex;align-items:center;gap:8px;border-bottom:1px dashed #bbb;background:#fafafa;color:#4b4b4b;font-size:12px}.p5-logo{align-self:stretch;display:grid;place-items:center;width:45px;background:#ed225d;color:#fff;font:900 17px/1 Arial}.p5-menu-button{height:100%;padding:0 9px;border:0;background:transparent;color:#4b4b4b;cursor:pointer}.p5-menu-button::after{content:" ▾";font-size:9px;color:#777}.p5-menu-button:hover,.p5-menu-button:focus-visible{background:#e8e8e8;outline:0}.file-menu-popup{position:absolute;z-index:5;top:31px;left:45px;width:145px;padding:5px;background:#fff;border:1px solid #bbb;box-shadow:0 5px 14px #0003}.file-menu-popup.hide{display:none}.file-menu-popup button{width:100%;padding:8px 10px;border:0;background:#fff;text-align:left;cursor:pointer}.file-menu-popup button:hover{background:#ffe0eb}.p5-toolbar{height:54px;display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:1px solid #c8c8c8;background:#f7f7f7}.p5-action{width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:50%;background:#ddd;cursor:pointer}.p5-action:hover,.p5-action:focus-visible{outline:3px solid #f8a6be}.p5-action.stop{background:#ed225d}.play-icon{width:0;height:0;margin-left:3px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid #333}.stop-icon{width:14px;height:14px;background:#fff}.auto-refresh{display:flex;align-items:center;gap:5px;color:#555;font-size:12px}.sketch-name{margin-left:8px;color:#444;font-size:13px}.p5-version{margin-left:auto;padding:5px 9px;border:1px solid #bbb;border-radius:13px;background:#fff;color:#444;font-size:11px}.p5-workspace{display:grid;grid-template-columns:132px minmax(0,1.05fr) minmax(0,.95fr);height:414px;min-height:0}.p5-files{min-height:0;overflow:hidden;border-right:1px solid #c7c7c7;background:#f3f3f3;color:#555;font-size:12px}.p5-files h3{margin:0;padding:10px;border-bottom:1px solid #ccc;font-size:12px}.file-item{display:block;width:100%;padding:7px 9px;border:0;background:transparent;color:#555;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.file-item.active{background:#ddd;color:#111;font-weight:800}.file-item::before{content:"▱";margin-right:6px;color:#777}.file-item.active::before{content:"◆";color:#ed225d;font-size:8px}.p5-code-column{display:grid;grid-template-rows:minmax(0,1fr) 104px;min-width:0;min-height:0;height:100%;overflow:hidden;border-right:1px solid #c7c7c7}.editor-pane{display:flex;flex-direction:column;min-height:0;overflow:hidden}.pane-head{height:30px;flex:0 0 30px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid #ccc;background:#f5f5f5;color:#555;font-size:12px}.pane-head strong{color:#333}.code-wrap{display:grid;grid-template-columns:42px 1fr;min-height:0;overflow:hidden;flex:1;background:#fff}.line-numbers{height:100%;margin:0;padding:10px 8px;border-right:1px solid #ddd;overflow:hidden;background:#f6f6f6;color:#999;text-align:right;font:12px/1.42 ui-monospace,monospace;user-select:none}.code-wrap textarea{width:100%;height:100%;min-height:0;resize:none;border:0;outline:0;padding:10px 12px;background:#fff;color:#252525;font:12px/1.42 ui-monospace,monospace;tab-size:2;white-space:pre}.p5-console{display:flex;flex-direction:column;min-height:0;overflow:hidden;border-top:1px solid #bbb;background:#f1f1f1}.console-head{height:27px;flex:0 0 27px;display:flex;align-items:center;padding:0 9px;background:#d9d9d9;color:#333;font-size:12px}.console-head button{margin-left:auto;border:0;background:transparent;color:#555;font-size:11px;cursor:pointer}.console-output{flex:1;margin:0;padding:7px 10px;overflow:auto;color:#333;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap}.preview-column{display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;overflow:hidden;background:#fff}.preview{flex:1;width:100%;min-height:0;border:0;background:#f2f2f2}.demo-note{font-size:14px;margin:0 0 9px}.reveal,.copy{border:0;border-radius:8px;padding:10px 13px;background:var(--p);color:#fff;font-weight:900;cursor:pointer}
     .timer{position:absolute;left:52px;bottom:13px;display:flex;align-items:center;gap:8px;padding:8px 11px;background:#111;color:#fff;border-radius:10px}.timer strong{min-width:58px;color:#ff8db5;font:900 22px/1 ui-monospace}.timer button{background:#29151e;color:#fff;border:1px solid #684052;border-radius:7px;padding:6px 9px}.reveal{margin-top:13px}.answer{display:none;margin-top:12px;padding:14px 17px;border-left:6px solid var(--green);border-radius:8px;background:#ecfdf3;color:#214b31}.answer.show{display:block}.dark .answer{background:#153522;color:#dcfce7}
     .checklist{list-style:none;padding:0}.checklist li{position:relative;padding:8px 0 8px 34px}.checklist li::before{content:"□";position:absolute;left:0;color:var(--p);font-size:24px;line-height:1}.debug-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.debug-flow div{padding:17px;border-radius:11px;background:#fff;border-top:5px solid var(--p)}.debug-flow b{display:block;margin-bottom:7px}.response{display:grid;gap:10px}.response label{font-weight:800}.response input{width:100%;padding:11px 12px;border:2px solid #ead9e0;border-radius:9px;background:#fff}.response input:focus{outline:2px solid #ff8db5;border-color:var(--p)}#copyStatus{min-height:24px;color:#166534;font-weight:800}
     .download{color:#9d174d;font-weight:800}.dark .download{color:#ff9fc1}.legend{display:flex;gap:18px;justify-content:center;color:#dccdd4;font-size:14px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}
@@ -37,144 +37,175 @@
     <button id="full" type="button">Full screen</button>
   </nav>
   <script>
-    const apiDemoCode=`let models;
-
-function preload() {
-  models = loadTable(
-    "assets/lab7/generative-ai-models.csv",
-    "csv", "header"
-  );
-}
-
-function setup() {
-  createCanvas(620, 390);
-  console.log(models);
-}
-
-function draw() {
-  background(245);
-
-  let name = models.getString(0, "model");
-  let month = models.getNum(0, "release_month");
-  let context = models.getNum(0, "context_window_k");
-  let size = map(context, 0, 2000, 40, 220);
-
-  fill(237, 34, 93, 190);
-  noStroke();
-  circle(width / 2, height / 2, size);
-
-  fill(30);
-  textAlign(CENTER);
-  textSize(22);
-  text(name, width / 2, 55);
-  textSize(14);
-  text(month + "/2024 · " + context + "K context", width / 2, 82);
-}`;
-
-    const jsonDemoCode=`let journal;
-
-function preload() {
-  journal = loadJSON(
-    "assets/lab7/my-ai-use.json"
-  );
-}
-
-function setup() {
-  createCanvas(620, 390);
-  console.log(journal);
-}
-
-function draw() {
-  background(245);
-
-  let entry = journal.entries[0];
-  let size = map(entry.minutes, 0, 60, 40, 220);
-
-  fill(237, 34, 93, 190);
-  noStroke();
-  circle(width / 2, height / 2, size);
-
-  fill(30);
-  textAlign(CENTER);
-  textSize(22);
-  text(entry.tool, width / 2, 55);
-  textSize(14);
-  text(entry.task + " · " + entry.minutes + " minutes", width / 2, 82);
-}`;
-
-    const detectiveArt=`<svg viewBox="0 0 760 410" role="img" aria-label="Five familiar generative AI models shown by 2024 release month and context window"><rect width="760" height="410" fill="#1a1023"/><g stroke="#4b3858" stroke-width="2"><path d="M75 340H700"/><path d="M120 334V348M360 334V348M445 334V348M530 334V348M690 334V348"/></g><g fill="#dccdd4" font-family="Arial" font-size="14" text-anchor="middle"><text x="120" y="372">Feb</text><text x="360" y="372">May</text><text x="445" y="372">Jun</text><text x="530" y="372">Jul</text><text x="690" y="372">Sep</text></g><g fill="#ed225d" fill-opacity=".84" stroke="#ff9fc1" stroke-width="3"><circle cx="120" cy="180" r="78"/><circle cx="360" cy="120" r="27"/><circle cx="445" cy="250" r="34"/><circle cx="530" cy="135" r="27"/><circle cx="690" cy="255" r="27"/></g><g fill="#fff" font-family="Arial" font-size="14" font-weight="700" text-anchor="middle"><text x="120" y="280">Gemini 1.5 Pro</text><text x="360" y="165">GPT-4o</text><text x="445" y="305">Claude 3.5 Sonnet</text><text x="530" y="180">Llama 3.1</text><text x="690" y="305">Qwen 2.5</text></g></svg>`;
-
-    const slides=[
-      {dark:1,eye:"Georgia Tech · Lab 7",body:`<h1>Working with APIs<br>and Data</h1><p class="lead">Create an expressive or interactive p5.js sketch in which data controls the visual.</p><div class="cards"><div class="card"><h3>Load</h3><p>Bring in CSV or JSON data.</p></div><div class="card"><h3>Map</h3><p>Connect values to size, color, or position.</p></div><div class="card"><h3>Communicate</h3><p>Help viewers feel or notice something.</p></div></div>`},
-      {eye:"Data Mapping Detective · Opening",time:"4 minutes",quiz:1,body:`<h2>Reverse-engineer the visual rules</h2><div class="detective"><div class="viz">${detectiveArt}</div><div><div class="choices"><button class="choice" data-ok="0">The model name</button><button class="choice" data-ok="1">The context window</button><button class="choice" data-ok="0">The organization</button></div><div class="feedback">What controls circle size? What might the x-position mean?</div><div class="answer quiz-answer"><strong>Visual rules:</strong><br><code>context_window_k</code> → circle size<br><code>release_month</code> → x position<br><code>model</code> → text label<br><br>Larger means a longer context window—not “better.”</div></div></div>`},
-      {eye:"Assignment Framing",time:"2 minutes",body:`<h2>Create a data-driven artwork or exploration</h2><div class="grid"><div class="card"><h3>Requirements</h3><ul><li>Use <code>loadJSON()</code>, <code>loadTable()</code>, or another loading function.</li><li>Represent data visually or interactively.</li><li>Communicate something about the data.</li></ul></div><div class="card"><h3>Deliverables</h3><ul><li>One PDF: sketch link, 3–4 sentence description, and screenshot of sketch + code.</li><li>One uploaded video showing the interaction.</li></ul></div></div>`},
-      {eye:"Finding Data",time:"4 minutes",body:`<h2>Where can you find a good dataset?</h2><div class="cards"><div class="card"><span class="tag">CSV</span><h3><a href="https://www.kaggle.com/datasets" target="_blank" rel="noreferrer">Kaggle Datasets ↗</a></h3><p>Look for a small table with clear column names. Load it with <code>loadTable()</code>.</p></div><div class="card"><span class="tag">JSON API</span><h3><a href="https://openlibrary.org/dev/docs/api/search" target="_blank" rel="noreferrer">Open Library ↗</a></h3><p>Search books and inspect the JSON response. Load it with <code>loadJSON()</code>.</p></div><div class="card"><span class="tag">JSON API</span><h3><a href="https://publicapis.io/wikidata-api" target="_blank" rel="noreferrer">Wikidata ↗</a></h3><p>Explore public knowledge across many topics, then inspect the returned fields.</p></div></div><div class="prompt"><strong>A good dataset:</strong> small enough to inspect · works with a p5.js loader · contains a field for size, color, or position · helps you finish “I want viewers to notice…”</div>`},
-      {eye:"Mental Model",time:"3 minutes",body:`<h2>From source to visual meaning</h2><div class="pipeline"><div class="step"><span>1</span><b>Source</b><small>CSV / API</small></div><div class="step"><span>2</span><b>Load</b><small>loadTable / loadJSON</small></div><div class="step"><span>3</span><b>Log + look</b><small>console</small></div><div class="step"><span>4</span><b>Access</b><small>row + column</small></div><div class="step"><span>5</span><b>Map</b><small>input → range</small></div><div class="step"><span>6</span><b>Draw</b><small>shape / text</small></div><div class="step"><span>7</span><b>Explain</b><small>what to notice</small></div></div><div class="prompt"><strong>Memory phrase:</strong> load → log → look → access → map → draw.</div>`},
-      {eye:"Choose the Loader",body:`<h2>Match the loader to the source</h2><div class="grid"><div class="card"><span class="tag">CSV</span><pre class="code">let models;
-function preload() {
-  models = loadTable(
-    "models.csv", "csv", "header"
-  );
-}</pre><p>Rows and columns. Use <code>getNum()</code> or <code>getString()</code>.</p></div><div class="card"><span class="tag">JSON / API</span><pre class="code">let data;
-function preload() {
-  data = loadJSON(apiUrl);
-}</pre><p>Objects and arrays. Log the response before choosing a field.</p></div></div>`},
-      {eye:"Inspect Before You Visualize",time:"3 minutes",quiz:1,body:`<h2>How do we access Gemini’s context window?</h2><div class="grid"><pre class="code">model,release_month,context_window_k
-Gemini 1.5 Pro,2,2000
-GPT-4o,5,128
-Claude 3.5 Sonnet,6,200</pre><div><div class="choices"><button class="choice" data-ok="0"><code>models.context_window_k[0]</code></button><button class="choice" data-ok="1"><code>models.getNum(0, "context_window_k")</code></button><button class="choice" data-ok="0"><code>models.getString("context_window_k", 0)</code></button></div><div class="feedback">Choose a row, then use the exact column header.</div></div></div>`},
-      {eye:"Access Pattern",body:`<h2>Read one row and one column</h2><div class="path"><span>models</span><i>→</i><span>row 0</span><i>→</i><span>"context_window_k"</span><i>→</i><span>2000</span></div><div class="grid"><pre class="code">let name = models.getString(
-  0, "model"
-);
-
-let context = models.getNum(
-  0, "context_window_k"
-);</pre><div class="card"><h3>Two useful methods</h3><p><code>getString()</code> for labels such as model names.</p><p><code>getNum()</code> for numbers that will control size, color, or position.</p></div></div>`},
-      {eye:"Meaningful Mapping",time:"3 minutes",reveal:1,body:`<h2>Decide what viewers should notice</h2><div class="grid"><div class="card"><h3>Generative AI model fields</h3><ul><li><code>context_window_k</code> → circle size</li><li><code>release_month</code> → x position</li><li><code>model</code> → text label</li></ul></div><div class="card"><h3>Ask before coding</h3><p>What comparison should viewers make?</p><p>Does the visual property support that comparison?</p><p>Can I explain the rule in one sentence?</p></div></div><button class="reveal">Reveal the test</button><div class="answer"><strong>The “because” test:</strong> “I mapped context-window length to circle size because larger marks make capacity easier to compare.”</div>`},
-      {eye:"Predict Before Run",time:"2 minutes",body:`<h2>One model → one circle</h2><div class="grid"><pre class="code">let context = models.getNum(
-  0, "context_window_k"
-);
-
-let size = map(
-  context,
-  0, 2000,
-  40, 220
-);
-
-circle(width / 2, height / 2, size);</pre><div class="card"><h3>Predict</h3><p>Row 0 is Gemini 1.5 Pro with a 2000K context window. Will its circle be closer to 40 or 220 pixels?</p><p>What happens if row <code>0</code> becomes row <code>4</code>?</p></div></div>`},
-      {eye:"p5.js Canvas Demo · Level 1",time:"6 minutes",demo:1,body:`<h2>Start simple: one model, one circle</h2><p class="demo-note">Run the sketch, then change every row index from <code>0</code> to <code>4</code>. Predict the result before pressing ▶ again.</p><div class="p5-shell"><div class="p5-menu"><span class="p5-logo">p5*</span><span>File</span><span>Edit</span><span>Sketch</span><span>Help</span></div><div class="p5-toolbar"><button class="p5-action" id="runCode" type="button" aria-label="Run sketch"><span class="play-icon"></span></button><button class="p5-action stop" id="stopCode" type="button" aria-label="Stop sketch"><span class="stop-icon"></span></button><label class="auto-refresh"><input id="autoRefresh" type="checkbox"> Auto-refresh</label><span class="sketch-name">generative-ai-models ✎</span><span class="p5-version">p5.js 1.11.3</span></div><div class="p5-workspace"><aside class="p5-files"><h3>Sketch files</h3><div class="file-item active">sketch.js</div><div class="file-item">generative-ai-models.csv</div><div class="file-item">index.html</div><div class="file-item">style.css</div></aside><section class="p5-code-column"><div class="editor-pane"><div class="pane-head"><strong>sketch.js</strong></div><div class="code-wrap"><pre class="line-numbers" id="lineNumbers" aria-hidden="true"></pre><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js sketch code"></textarea></div></div><div class="p5-console"><div class="console-head"><strong>Console</strong><button id="clearConsole" type="button">Clear</button></div><pre class="console-output" id="demoConsole" aria-live="polite">Ready. Press ▶ Run.</pre></div></section><section class="preview-column"><div class="pane-head"><strong>Preview</strong></div><iframe class="preview" id="preview" title="p5.js canvas preview"></iframe></section></div></div>`},
-      {eye:"Practice · Level 2",time:"5 minutes",body:`<h2>Make a tiny JSON file, then load it</h2><div class="grid"><div><p><a class="download" href="assets/lab7/my-ai-use.json" download>Download my-ai-use.json</a></p><pre class="code">{
+    const P5_VERSION="1.11.3";
+    const starterJson=`{
   "entries": [
-    {"tool":"ChatGPT", "task":"brainstorming", "minutes":25},
-    {"tool":"Claude", "task":"reading notes", "minutes":40}
+    {
+      "tool": "ChatGPT",
+      "task": "brainstorming",
+      "minutes": 25
+    },
+    {
+      "tool": "Claude",
+      "task": "reading",
+      "minutes": 40
+    }
   ]
-}</pre></div><div><pre class="code">let journal;
+}`;
+
+    const starterSketch=`function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(240);
+}`;
+
+    const loadSketch=`let journal;
 
 function preload() {
   journal = loadJSON("my-ai-use.json");
 }
 
+function setup() {
+  createCanvas(600, 400);
+  console.log(journal);
+  noLoop();
+}
+
 function draw() {
+  background(240);
+}`;
+
+    const oneCircleSketch=`let journal;
+
+function preload() {
+  journal = loadJSON("my-ai-use.json");
+}
+
+function setup() {
+  createCanvas(600, 400);
+  console.log(journal);
+}
+
+function draw() {
+  background(240);
+
   let entry = journal.entries[0];
-  let size = map(entry.minutes, 0, 60, 40, 220);
-  circle(width / 2, height / 2, size);
-}</pre><p class="small">In the p5.js editor: upload the JSON file, replace the CSV <code>preload()</code> code, then use <code>journal.entries[0]</code> inside <code>draw()</code>.</p></div></div><div class="prompt"><strong>Your turn:</strong> replace the example with 3–5 entries about your own AI-tool use, prompts, creative ideas, or another small personal dataset. Then <code>console.log(journal)</code> before drawing.</div>`},
-      {dark:1,eye:"Guided Practice · Core Route",time:"6 minutes",timer:360,body:`<h2>Finish one local-file route well</h2><div class="cards"><div class="card"><h3>Level 1 · Load + run</h3><p>Use the provided CSV. Change a row index and confirm the visual changes.</p></div><div class="card"><h3>Level 2 · Load + inspect</h3><p>Use the provided JSON. Log <code>journal</code>, then access <code>journal.entries[0]</code>.</p></div><div class="card"><h3>Level 3 · Make it yours</h3><p>Edit or add 3–5 JSON entries. Map one number to size, color, or position.</p></div></div><div class="prompt"><strong>Core success:</strong> one local file loads, one field controls the visual, and you can explain the rule.</div>`},
-      {eye:"Console Check",time:"3 minutes",body:`<h2>Log before you draw</h2><div class="grid"><pre class="code">console.log(models);
-console.log(models.getRowCount());
-console.log(models.getString(0, "model"));
-console.log(models.getNum(0, "context_window_k"));</pre><div class="card"><h3>If the sketch is blank</h3><ol><li>Read the console.</li><li>Check the CSV filename.</li><li>Copy the column header exactly.</li><li>Log one value before using <code>map()</code>.</li></ol></div></div>`},
-      {eye:"Extended Activity · Optional Challenge",body:`<h2>Choose one challenge after the core works</h2><div class="cards"><div class="card"><h3>Load a simple API</h3><p>Use <code>loadJSON()</code> with Open Library or Wikidata. Log the response before drawing.</p></div><div class="card"><h3>Load two files</h3><p>Load one CSV and one JSON. Let each file control a different visual decision.</p><pre class="code">models = loadTable(...);
-journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p>Show a label when the mouse moves over its circle, only if that helps viewers notice something.</p></div></div><div class="prompt"><strong>Rule:</strong> finish one local-file sketch first. API and multiple-file work are extensions, not extra requirements.</div>`},
-      {dark:1,eye:"Student Build Sprint",time:"15 minutes",timer:900,body:`<h2>Build one clear data-driven sketch</h2><div class="cards"><div class="card"><h3>0–4 min · Load + inspect</h3><p>Choose CSV or JSON. Confirm it loads and log the data.</p></div><div class="card"><h3>4–10 min · Access + map</h3><p>Draw your marks and tune one meaningful visual mapping.</p></div><div class="card"><h3>10–15 min · Make or extend</h3><p>Edit your JSON, add interaction, or try API / multiple files after the core works.</p></div></div><div class="prompt"><strong>Done means:</strong> data loads, a field controls a visual or interactive property, and the sketch communicates something.</div>`},
-      {eye:"Guess My Mapping · Closer",time:"2 minutes",timer:120,body:`<h2>Show the visual. Hide the code.</h2><div class="cards"><div class="card"><h3>Viewer</h3><p>Guess the data field.</p></div><div class="card"><h3>Viewer</h3><p>Guess the visual property.</p></div><div class="card"><h3>Maker</h3><p>Reveal the rule and what viewers should notice.</p></div></div><div class="prompt"><strong>Listen for:</strong> “I think ___ controls ___ because I notice ___.”</div>`},
-      {dark:1,eye:"Exit Ticket",time:"2 minutes",exit:1,body:`<h2>Complete the data-to-visual chain</h2><div class="grid"><div class="response"><label for="fieldAnswer">1. My data field is…</label><input id="fieldAnswer" placeholder="context_window_k"><label for="visualAnswer">2. It controls…</label><input id="visualAnswer" placeholder="circle size"><label for="becauseAnswer">3. This is meaningful because…</label><input id="becauseAnswer" placeholder="viewers can compare context-window length"><button class="copy" id="copyExit" type="button">Copy my exit ticket</button><div id="copyStatus" aria-live="polite"></div></div><div><div class="prompt"><strong>One last habit:</strong><br>Before drawing, I will <strong>load → log → look</strong>.</div><p class="small">Then: access → map → draw → explain.</p></div></div>`},
-      {dark:1,eye:"Lab 7 · Recap",body:`<h1>Data controls the visual.</h1><div class="path"><span>source</span><i>→</i><span>inspect</span><i>→</i><span>field</span><i>→</i><span>property</span><i>→</i><span>meaning</span></div><p class="lead center">Make the code work—and make the mapping readable.</p><p class="center"><a class="download" href="assets/lab7/generative-ai-models.csv" download>Download the Generative AI model CSV</a><br><a class="download" href="assets/lab7/my-ai-use.json" download>Download the editable JSON example</a></p>`}
+  let size = entry.minutes * 4;
+
+  fill(237, 34, 93, 190);
+  noStroke();
+  circle(width / 2, 230, size);
+
+  fill(30);
+  textAlign(CENTER);
+  textSize(22);
+  text(entry.tool, width / 2, 60);
+  textSize(15);
+  text(entry.task + " · " + entry.minutes + " min", width / 2, 88);
+}`;
+
+    const allCirclesSketch=`let journal;
+
+function preload() {
+  journal = loadJSON("my-ai-use.json");
+}
+
+function setup() {
+  createCanvas(600, 400);
+  console.log(journal);
+}
+
+function draw() {
+  background(240);
+  textAlign(CENTER);
+
+  for (let i = 0; i < journal.entries.length; i++) {
+    let entry = journal.entries[i];
+    let x = width / (journal.entries.length + 1) * (i + 1);
+    let size = entry.minutes * 3;
+
+    fill(237, 34, 93, 180);
+    noStroke();
+    circle(x, 225, size);
+
+    fill(30);
+    textSize(16);
+    text(entry.tool, x, 60);
+    textSize(12);
+    text(entry.task, x, 82);
+    text(entry.minutes + " min", x, 102);
+  }
+}`;
+
+    const demoProject={"sketch.js":starterSketch};
+    let activeDemoFile="sketch.js";
+
+    function p5DemoShell(){
+      return `<div class="p5-shell">
+        <div class="p5-menu">
+          <span class="p5-logo">p5*</span>
+          <button class="p5-menu-button" id="fileMenuButton" type="button">File</button>
+          <button class="p5-menu-button" type="button">Edit</button>
+          <button class="p5-menu-button" type="button">Sketch</button>
+          <button class="p5-menu-button" type="button">Help</button>
+          <div class="file-menu-popup hide" id="fileMenuPopup"><button id="addDemoFile" type="button">Add File…</button></div>
+        </div>
+        <div class="p5-toolbar">
+          <button class="p5-action" id="runCode" type="button" aria-label="Run sketch"><span class="play-icon"></span></button>
+          <button class="p5-action stop" id="stopCode" type="button" aria-label="Stop sketch"><span class="stop-icon"></span></button>
+          <label class="auto-refresh"><input id="autoRefresh" type="checkbox"> Auto-refresh</label>
+          <span class="sketch-name">my-ai-use-visualization ✎</span>
+          <select class="p5-version" id="p5Version" aria-label="p5.js version"><option>p5.js 1.11.3</option></select>
+        </div>
+        <div class="p5-workspace">
+          <aside class="p5-files"><h3>Sketch files</h3><div id="demoFileList"></div></aside>
+          <section class="p5-code-column">
+            <div class="editor-pane">
+              <div class="pane-head"><strong id="activeFileName">sketch.js</strong></div>
+              <div class="code-wrap"><pre class="line-numbers" id="lineNumbers" aria-hidden="true"></pre><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js project file"></textarea></div>
+            </div>
+            <div class="p5-console"><div class="console-head"><strong>Console</strong><button id="clearConsole" type="button">Clear</button></div><pre class="console-output" id="demoConsole" aria-live="polite">Ready.</pre></div>
+          </section>
+          <section class="preview-column"><div class="pane-head"><strong>Preview</strong></div><iframe class="preview" id="preview" title="p5.js canvas preview"></iframe></section>
+        </div>
+      </div>`;
+    }
+
+    const aiUseArt=`<svg viewBox="0 0 760 410" role="img" aria-label="Three AI-use activities represented by circles of different sizes">
+      <rect width="760" height="410" fill="#1a1023"/>
+      <g fill="#ed225d" fill-opacity=".84" stroke="#ff9fc1" stroke-width="3">
+        <circle cx="145" cy="220" r="62"/><circle cx="380" cy="220" r="98"/><circle cx="615" cy="220" r="40"/>
+      </g>
+      <g fill="#fff" font-family="Arial" text-anchor="middle">
+        <text x="145" y="80" font-size="19" font-weight="700">ChatGPT</text><text x="145" y="105" font-size="14">brainstorming</text>
+        <text x="380" y="80" font-size="19" font-weight="700">Claude</text><text x="380" y="105" font-size="14">reading</text>
+        <text x="615" y="80" font-size="19" font-weight="700">Gemini</text><text x="615" y="105" font-size="14">image ideas</text>
+      </g>
+    </svg>`;
+
+    const slides=[
+      {dark:1,eye:"Georgia Tech · Lab 7",body:`<h1>Create, Load, and<br>Visualize Your Own Data</h1><p class="lead">Build a small JSON dataset in p5.js and make its values control the visual.</p><div class="path"><span>create</span><i>→</i><span>load</span><i>→</i><span>inspect</span><i>→</i><span>visualize</span><i>→</i><span>revise</span></div>`},
+      {eye:"Warm-up · Notice the Mapping",time:"4 minutes",quiz:1,body:`<h2>What controls the size of each circle?</h2><div class="detective"><div class="viz">${aiUseArt}</div><div><div class="choices"><button class="choice" data-ok="0">The AI tool</button><button class="choice" data-ok="0">The task name</button><button class="choice" data-ok="1">Minutes spent</button></div><div class="feedback">Look for a numeric field that could become a visual size.</div><div class="answer quiz-answer"><strong>Visual rules:</strong><br><code>minutes</code> → circle size<br><code>tool</code> → main label<br><code>task</code> → description<br><br>Today you will create this data yourself.</div></div></div>`},
+      {eye:"Data Literacy · Before Coding",time:"5 minutes",body:`<h2>How do we choose a good data source?</h2><div class="grid"><div class="card"><h3>Possible sources</h3><ul><li><strong>Your own observations:</strong> habits, media, exercise, AI use</li><li><strong>Public/open data:</strong> government, museums, universities</li><li><strong>Dataset repositories:</strong> downloadable CSV or JSON</li><li><strong>APIs:</strong> books, weather, public information</li></ul></div><div class="card"><h3>Check before using</h3><ul class="checklist"><li>Relevant to your question</li><li>Reliable creator and date</li><li>Clear fields and units</li><li>Small enough to inspect</li><li>Complete enough to use</li><li>Safe, ethical, and non-sensitive</li></ul></div></div><div class="prompt"><strong>Today’s good source:</strong> 2–4 observations you create yourself. The fields are clear, the scope is manageable, and you control what personal information is included.</div>`},
+      {eye:"Set Up the Same Environment",time:"2 minutes",body:`<h2>Confirm the p5.js version first</h2><div class="grid"><div class="card"><span class="tag green">LOCKED VERSION</span><h3>p5.js 1.11.3</h3><p>Teacher demo, embedded preview, and student projects should all use the same version.</p></div><div class="card"><h3>Before we begin</h3><ol><li>Open a new p5.js Web Editor project.</li><li>Find the version selector.</li><li>Select <strong>p5.js 1.11.3</strong>.</li><li>Keep the default <code>sketch.js</code>.</li></ol></div></div><div class="prompt"><strong>Why lock it?</strong> The same code should behave the same way on every screen.</div>`},
+      {eye:"p5.js Demo 1 · Create the Data File",time:"7 minutes",demo:"create",body:`<h2>Create <code>my-ai-use.json</code> inside p5.js</h2><p class="demo-note"><strong>Live steps:</strong> File → Add File… → enter <code>my-ai-use.json</code> → type two entries → add one of your own. Do not download anything.</p>${p5DemoShell()}`},
+      {eye:"p5.js Demo 2 · Load + Inspect",time:"5 minutes",demo:"load",body:`<h2>Load the file before drawing</h2><p class="demo-note">Switch to <code>sketch.js</code>. Run <code>loadJSON("my-ai-use.json")</code>, then inspect the object in the Console.</p>${p5DemoShell()}`},
+      {eye:"Access One Value",time:"3 minutes",body:`<h2>Follow the path to the number</h2><div class="path"><span>journal</span><i>→</i><span>entries</span><i>→</i><span>[0]</span><i>→</i><span>minutes</span><i>→</i><span>25</span></div><div class="grid"><pre class="code">let entry = journal.entries[0];
+let size = entry.minutes * 4;</pre><div class="card"><h3>Read it aloud</h3><p>“From <code>journal</code>, open <code>entries</code>, choose the first entry, and read its <code>minutes</code>.”</p><p><code>* 4</code> turns a small number of minutes into a visible circle size.</p></div></div>`},
+      {eye:"p5.js Demo 3 · Visualize One Entry",time:"4 minutes",demo:"one",body:`<h2>One entry → one circle</h2><p class="demo-note">Change the first entry’s <code>minutes</code> in <code>my-ai-use.json</code>, return to <code>sketch.js</code>, and press ▶ again.</p>${p5DemoShell()}`},
+      {eye:"p5.js Demo 4 · Visualize Every Entry",time:"3 minutes",demo:"all",body:`<h2>A loop draws every entry you create</h2><p class="demo-note">The loop uses <code>journal.entries.length</code>. Add a third JSON entry and rerun—the visualization should add a third circle.</p>${p5DemoShell()}`},
+      {dark:1,eye:"Student Build Sprint",time:"12 minutes",timer:720,body:`<h2>Create your own data-driven sketch</h2><div class="cards"><div class="card"><h3>0–4 min · Create</h3><p>Write 2–4 valid JSON entries with <code>tool</code>, <code>task</code>, and <code>minutes</code>.</p></div><div class="card"><h3>4–8 min · Load</h3><p>Use <code>loadJSON()</code>. Run and confirm the object appears in the Console.</p></div><div class="card"><h3>8–12 min · Visualize</h3><p>Let <code>minutes</code> control circle size. Change a value and rerun.</p></div></div><div class="prompt"><strong>Core success:</strong> your file loads, one numeric field controls a visual property, and you can explain the rule.<br><strong>If it breaks:</strong> check the filename, quotation marks, commas, brackets, and Console message.</div>`},
+      {eye:"Pair Share · Guess My Mapping",time:"2 minutes",timer:120,body:`<h2>Show the visual before showing the code</h2><div class="cards"><div class="card"><h3>Viewer</h3><p>Guess which data field controls size.</p></div><div class="card"><h3>Maker</h3><p>Reveal the JSON and explain the rule.</p></div><div class="card"><h3>Together</h3><p>Suggest one responsible data source for a future sketch.</p></div></div><div class="prompt"><strong>Sentence frame:</strong> “I mapped ___ to ___ because I wanted viewers to notice ___.”</div>`},
+      {dark:1,eye:"Exit Ticket",time:"3 minutes",exit:1,body:`<h2>Complete the data-to-visual chain</h2><div class="grid"><div class="response"><label for="fieldAnswer">1. My data field is…</label><input id="fieldAnswer" placeholder="minutes"><label for="visualAnswer">2. It controls…</label><input id="visualAnswer" placeholder="circle size"><label for="becauseAnswer">3. This is meaningful because…</label><input id="becauseAnswer" placeholder="viewers can compare how I used different tools"><button class="copy" id="copyExit" type="button">Copy my exit ticket</button><div id="copyStatus" aria-live="polite"></div></div><div><div class="prompt"><strong>One last habit:</strong><br>Create → load → log → look → access → draw → revise.</div><p class="small">A good visualization makes its data-to-visual rule understandable.</p></div></div>`}
     ];
 
-    function demoDoc(code){
-      const safe=code.replace(/<\/script/gi,"<\\/script");
-      return `<!doctype html><html><head><base href="${document.baseURI}"><style>html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif;background:#f2f2f2}body{display:grid;place-items:center;overflow:auto;padding:12px}canvas{max-width:100%;height:auto!important;background:#fff;box-shadow:0 2px 10px #0002}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><script>const format=x=>{try{if(x&&typeof x.getRowCount==='function'&&Array.isArray(x.columns)){const rows=x.getRows().slice(0,3).map(row=>x.columns.map(column=>row.getString(column)).join(', '));return 'p5.Table ('+x.getRowCount()+' rows)\\n'+x.columns.join(', ')+'\\n'+rows.join('\\n')}return typeof x==='object'?JSON.stringify(x):String(x)}catch{return String(x)}},send=(level,a)=>parent.postMessage({source:'lab7-p5-demo',level,text:a.map(format).join(' ')},'*');['log','warn','error'].forEach(level=>{const old=console[level];console[level]=(...a)=>{send(level,a);old(...a)}});addEventListener('error',e=>send('error',['✗',e.message]));addEventListener('unhandledrejection',e=>send('error',['✗',e.reason]));send('log',['Starting p5.js…']);${safe}<\/script></body></html>`;
+    function demoDoc(code,jsonText){
+      const jsonUrl="data:application/json;charset=utf-8,"+encodeURIComponent(jsonText||"{}");
+      const runnable=code.replace(/loadJSON\(\s*["']my-ai-use\.json["']\s*\)/g,`loadJSON(${JSON.stringify(jsonUrl)})`);
+      const safe=runnable.replace(/<\/script/gi,"<\\/script");
+      return `<!doctype html><html><head><style>html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif;background:#f2f2f2}body{display:grid;place-items:center;overflow:auto;padding:12px}canvas{max-width:100%;height:auto!important;background:#fff;box-shadow:0 2px 10px #0002}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script></head><body><script>const format=x=>{try{return typeof x==='object'?JSON.stringify(x,null,2):String(x)}catch{return String(x)}},send=(level,a)=>parent.postMessage({source:'lab7-p5-demo',level,text:a.map(format).join(' ')},'*');['log','warn','error'].forEach(level=>{const old=console[level];console[level]=(...a)=>{send(level,a);old(...a)}});addEventListener('error',e=>send('error',['✗',e.message]));addEventListener('unhandledrejection',e=>send('error',['✗',e.reason]));send('log',['Running with p5.js 1.11.3']);${safe}<\/script></body></html>`;
     }
 
     const deck=document.querySelector('#deck');
@@ -194,7 +225,7 @@ journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p
           document.querySelectorAll('.choice').forEach(item=>item.classList.remove('correct','wrong'));
           button.classList.add(correct?'correct':'wrong');
           feedback.className='feedback '+(correct?'good':'try');
-          feedback.textContent=correct?'✓ Yes. Now explain what visual evidence supports that mapping.':'Try again—follow the object, array index, and field, or compare what visibly changes.';
+          feedback.textContent=correct?'✓ Yes. The largest circle represents the most minutes.':'Try again—look for the numeric field that could reasonably control size.';
           const answer=document.querySelector('.quiz-answer');
           if(answer)answer.classList.toggle('show',correct);
         });
@@ -235,18 +266,63 @@ journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p
       paint();
     }
 
-    function setupDemo(initialCode=apiDemoCode){
+    function setupDemo(mode){
       const editor=document.querySelector('#codeEditor');
       const preview=document.querySelector('#preview');
       const output=document.querySelector('#demoConsole');
       const lineNumbers=document.querySelector('#lineNumbers');
       const autoRefresh=document.querySelector('#autoRefresh');
+      const fileList=document.querySelector('#demoFileList');
+      const activeFileName=document.querySelector('#activeFileName');
+      const fileMenuButton=document.querySelector('#fileMenuButton');
+      const fileMenuPopup=document.querySelector('#fileMenuPopup');
+      const addDemoFile=document.querySelector('#addDemoFile');
       let refreshId;
-      editor.value=initialCode;
+
+      if(mode!=="create"&&!demoProject["my-ai-use.json"])demoProject["my-ai-use.json"]=starterJson;
+      if(mode==="load")demoProject["sketch.js"]=loadSketch;
+      if(mode==="one")demoProject["sketch.js"]=oneCircleSketch;
+      if(mode==="all")demoProject["sketch.js"]=allCirclesSketch;
+      if(mode!=="create")activeDemoFile="sketch.js";
+
       const updateLines=()=>{lineNumbers.textContent=editor.value.split('\n').map((_,index)=>index+1).join('\n')};
+      const saveActive=()=>{demoProject[activeDemoFile]=editor.value};
+      const selectFile=name=>{
+        saveActive();
+        activeDemoFile=name;
+        editor.value=demoProject[name];
+        activeFileName.textContent=name;
+        renderFiles();
+        updateLines();
+      };
+      const renderFiles=()=>{
+        fileList.innerHTML="";
+        Object.keys(demoProject).forEach(name=>{
+          const button=document.createElement("button");
+          button.type="button";
+          button.className="file-item"+(name===activeDemoFile?" active":"");
+          button.textContent=name;
+          button.addEventListener("click",()=>selectFile(name));
+          fileList.appendChild(button);
+        });
+      };
       const run=()=>{
+        saveActive();
+        const code=demoProject["sketch.js"];
+        const jsonText=demoProject["my-ai-use.json"]||"";
+        if(/loadJSON\s*\(/.test(code)){
+          if(!jsonText){
+            output.textContent='✗ Create my-ai-use.json first: File → Add File…';
+            return;
+          }
+          try{JSON.parse(jsonText)}
+          catch(error){
+            output.textContent='✗ JSON error: '+error.message+'\nCheck quotation marks, commas, braces, and brackets.';
+            return;
+          }
+        }
         output.textContent='Running sketch…';
-        preview.srcdoc=demoDoc(editor.value);
+        preview.srcdoc=demoDoc(code,jsonText);
       };
       const stop=()=>{
         preview.srcdoc='<!doctype html><html><body style="margin:0;background:#f2f2f2"></body></html>';
@@ -262,8 +338,22 @@ journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p
       document.querySelector('#runCode').addEventListener('click',run);
       document.querySelector('#stopCode').addEventListener('click',stop);
       document.querySelector('#clearConsole').addEventListener('click',()=>{output.textContent='Console cleared.'});
+      fileMenuButton.addEventListener('click',()=>fileMenuPopup.classList.toggle('hide'));
+      addDemoFile.addEventListener('click',()=>{
+        fileMenuPopup.classList.add('hide');
+        const requested=prompt('Name the new file:','my-ai-use.json');
+        if(!requested)return;
+        const name=requested.trim();
+        if(!name)return;
+        if(!demoProject[name])demoProject[name]=name==="my-ai-use.json"?"":``;
+        selectFile(name);
+        if(name==="my-ai-use.json"&&!editor.value){
+          output.textContent='File created. Type the JSON data shown above, then switch back to sketch.js.';
+        }
+      });
       editor.addEventListener('scroll',()=>{lineNumbers.scrollTop=editor.scrollTop});
       editor.addEventListener('input',()=>{
+        saveActive();
         updateLines();
         if(autoRefresh.checked){clearTimeout(refreshId);refreshId=setTimeout(run,500)}
       });
@@ -272,10 +362,18 @@ journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p
         event.preventDefault();
         const start=editor.selectionStart;
         editor.setRangeText('  ',start,editor.selectionEnd,'end');
+        saveActive();
         updateLines();
       });
+      renderFiles();
+      editor.value=demoProject[activeDemoFile];
+      activeFileName.textContent=activeDemoFile;
       updateLines();
-      run();
+      if(mode==="create"){
+        output.textContent=demoProject["my-ai-use.json"]?'JSON file ready. Edit it, then switch to sketch.js.':'Use File → Add File… to create my-ai-use.json.';
+      }else{
+        run();
+      }
     }
 
     function setupExit(){
@@ -301,7 +399,7 @@ journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p
       if(slide.quiz)setupQuiz();
       if(slide.reveal)setupReveals();
       if(slide.timer)setupTimer(slide.timer);
-      if(slide.demo)setupDemo(slide.demoCode||apiDemoCode);
+      if(slide.demo)setupDemo(slide.demo);
       if(slide.exit)setupExit();
     }
 
