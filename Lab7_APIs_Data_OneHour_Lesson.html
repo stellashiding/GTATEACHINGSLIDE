@@ -71,6 +71,37 @@ function draw() {
   text(month + "/2024 · " + context + "K context", width / 2, 82);
 }`;
 
+    const jsonDemoCode=`let journal;
+
+function preload() {
+  journal = loadJSON(
+    "assets/lab7/my-ai-use.json"
+  );
+}
+
+function setup() {
+  createCanvas(620, 390);
+  console.log(journal);
+}
+
+function draw() {
+  background(245);
+
+  let entry = journal.entries[0];
+  let size = map(entry.minutes, 0, 60, 40, 220);
+
+  fill(237, 34, 93, 190);
+  noStroke();
+  circle(width / 2, height / 2, size);
+
+  fill(30);
+  textAlign(CENTER);
+  textSize(22);
+  text(entry.tool, width / 2, 55);
+  textSize(14);
+  text(entry.task + " · " + entry.minutes + " minutes", width / 2, 82);
+}`;
+
     const detectiveArt=`<svg viewBox="0 0 760 410" role="img" aria-label="Five familiar generative AI models shown by 2024 release month and context window"><rect width="760" height="410" fill="#1a1023"/><g stroke="#4b3858" stroke-width="2"><path d="M75 340H700"/><path d="M120 334V348M360 334V348M445 334V348M530 334V348M690 334V348"/></g><g fill="#dccdd4" font-family="Arial" font-size="14" text-anchor="middle"><text x="120" y="372">Feb</text><text x="360" y="372">May</text><text x="445" y="372">Jun</text><text x="530" y="372">Jul</text><text x="690" y="372">Sep</text></g><g fill="#ed225d" fill-opacity=".84" stroke="#ff9fc1" stroke-width="3"><circle cx="120" cy="180" r="78"/><circle cx="360" cy="120" r="27"/><circle cx="445" cy="250" r="34"/><circle cx="530" cy="135" r="27"/><circle cx="690" cy="255" r="27"/></g><g fill="#fff" font-family="Arial" font-size="14" font-weight="700" text-anchor="middle"><text x="120" y="280">Gemini 1.5 Pro</text><text x="360" y="165">GPT-4o</text><text x="445" y="305">Claude 3.5 Sonnet</text><text x="530" y="180">Llama 3.1</text><text x="690" y="305">Qwen 2.5</text></g></svg>`;
 
     const slides=[
@@ -112,16 +143,33 @@ let size = map(
 
 circle(width / 2, height / 2, size);</pre><div class="card"><h3>Predict</h3><p>Row 0 is Gemini 1.5 Pro with a 2000K context window. Will its circle be closer to 40 or 220 pixels?</p><p>What happens if row <code>0</code> becomes row <code>4</code>?</p></div></div>`},
       {eye:"p5.js Canvas Demo · Level 1",time:"6 minutes",demo:1,body:`<h2>Start simple: one model, one circle</h2><p class="demo-note">Run the sketch, then change every row index from <code>0</code> to <code>4</code>. Predict the result before pressing ▶ again.</p><div class="p5-shell"><div class="p5-menu"><span class="p5-logo">p5*</span><span>File</span><span>Edit</span><span>Sketch</span><span>Help</span></div><div class="p5-toolbar"><button class="p5-action" id="runCode" type="button" aria-label="Run sketch"><span class="play-icon"></span></button><button class="p5-action stop" id="stopCode" type="button" aria-label="Stop sketch"><span class="stop-icon"></span></button><label class="auto-refresh"><input id="autoRefresh" type="checkbox"> Auto-refresh</label><span class="sketch-name">generative-ai-models ✎</span><span class="p5-version">p5.js 1.11.3</span></div><div class="p5-workspace"><aside class="p5-files"><h3>Sketch files</h3><div class="file-item active">sketch.js</div><div class="file-item">generative-ai-models.csv</div><div class="file-item">index.html</div><div class="file-item">style.css</div></aside><section class="p5-code-column"><div class="editor-pane"><div class="pane-head"><strong>sketch.js</strong></div><div class="code-wrap"><pre class="line-numbers" id="lineNumbers" aria-hidden="true"></pre><textarea id="codeEditor" spellcheck="false" aria-label="Editable p5.js sketch code"></textarea></div></div><div class="p5-console"><div class="console-head"><strong>Console</strong><button id="clearConsole" type="button">Clear</button></div><pre class="console-output" id="demoConsole" aria-live="polite">Ready. Press ▶ Run.</pre></div></section><section class="preview-column"><div class="pane-head"><strong>Preview</strong></div><iframe class="preview" id="preview" title="p5.js canvas preview"></iframe></section></div></div>`},
-      {dark:1,eye:"Guided Practice · Levels 2–3",time:"7 minutes",timer:420,body:`<h2>Progress from one record to many</h2><div class="cards"><div class="card"><h3>Level 1 · Change</h3><p>Change the row index. Confirm the model name and circle size both change.</p></div><div class="card"><h3>Level 2 · Repeat</h3><p>Use a <code>for</code> loop from <code>0</code> to <code>models.getRowCount()</code>.</p></div><div class="card"><h3>Level 3 · Map</h3><p>Map <code>release_month</code> to x and <code>context_window_k</code> to size.</p></div></div><div class="prompt"><strong>Checkpoint:</strong> Every mark comes from a row, and you can explain what each visual property means.</div>`},
+      {eye:"Practice · Level 2",time:"5 minutes",body:`<h2>Make a tiny JSON file, then load it</h2><div class="grid"><div><p><a class="download" href="assets/lab7/my-ai-use.json" download>Download my-ai-use.json</a></p><pre class="code">{
+  "entries": [
+    {"tool":"ChatGPT", "task":"brainstorming", "minutes":25},
+    {"tool":"Claude", "task":"reading notes", "minutes":40}
+  ]
+}</pre></div><div><pre class="code">let journal;
+
+function preload() {
+  journal = loadJSON("my-ai-use.json");
+}
+
+function draw() {
+  let entry = journal.entries[0];
+  let size = map(entry.minutes, 0, 60, 40, 220);
+  circle(width / 2, height / 2, size);
+}</pre><p class="small">In the p5.js editor: upload the JSON file, replace the CSV <code>preload()</code> code, then use <code>journal.entries[0]</code> inside <code>draw()</code>.</p></div></div><div class="prompt"><strong>Your turn:</strong> replace the example with 3–5 entries about your own AI-tool use, prompts, creative ideas, or another small personal dataset. Then <code>console.log(journal)</code> before drawing.</div>`},
+      {dark:1,eye:"Guided Practice · Core Route",time:"6 minutes",timer:360,body:`<h2>Finish one local-file route well</h2><div class="cards"><div class="card"><h3>Level 1 · Load + run</h3><p>Use the provided CSV. Change a row index and confirm the visual changes.</p></div><div class="card"><h3>Level 2 · Load + inspect</h3><p>Use the provided JSON. Log <code>journal</code>, then access <code>journal.entries[0]</code>.</p></div><div class="card"><h3>Level 3 · Make it yours</h3><p>Edit or add 3–5 JSON entries. Map one number to size, color, or position.</p></div></div><div class="prompt"><strong>Core success:</strong> one local file loads, one field controls the visual, and you can explain the rule.</div>`},
       {eye:"Console Check",time:"3 minutes",body:`<h2>Log before you draw</h2><div class="grid"><pre class="code">console.log(models);
 console.log(models.getRowCount());
 console.log(models.getString(0, "model"));
 console.log(models.getNum(0, "context_window_k"));</pre><div class="card"><h3>If the sketch is blank</h3><ol><li>Read the console.</li><li>Check the CSV filename.</li><li>Copy the column header exactly.</li><li>Log one value before using <code>map()</code>.</li></ol></div></div>`},
-      {eye:"Extended Activity · Optional Challenge",body:`<h2>Choose one challenge</h2><div class="cards"><div class="card"><h3>Add interaction</h3><p>Show a model label when the mouse moves over its circle.</p></div><div class="card"><h3>Add another mapping</h3><p>Use a second field to control color or position.</p></div><div class="card"><h3>Try a simple API</h3><p>Use <code>loadJSON()</code> with Open Library or Wikidata. Log the response before drawing.</p></div></div><div class="prompt"><strong>Keep the goal:</strong> the interaction or extra mapping should help viewers notice something about the data.</div>`},
-      {dark:1,eye:"Student Build Sprint",time:"15 minutes",timer:900,body:`<h2>Build one clear data-driven sketch</h2><div class="cards"><div class="card"><h3>0–4 min · Load + inspect</h3><p>Confirm the data and log the field you want.</p></div><div class="card"><h3>4–10 min · Access + map</h3><p>Draw your marks and tune the output range.</p></div><div class="card"><h3>10–15 min · Explain + test</h3><p>Make the interaction or visual meaning easy to describe.</p></div></div><div class="prompt"><strong>Done means:</strong> data loads, a field controls a visual or interactive property, and the sketch communicates something.</div>`},
+      {eye:"Extended Activity · Optional Challenge",body:`<h2>Choose one challenge after the core works</h2><div class="cards"><div class="card"><h3>Load a simple API</h3><p>Use <code>loadJSON()</code> with Open Library or Wikidata. Log the response before drawing.</p></div><div class="card"><h3>Load two files</h3><p>Load one CSV and one JSON. Let each file control a different visual decision.</p><pre class="code">models = loadTable(...);
+journal = loadJSON(...);</pre></div><div class="card"><h3>Add interaction</h3><p>Show a label when the mouse moves over its circle, only if that helps viewers notice something.</p></div></div><div class="prompt"><strong>Rule:</strong> finish one local-file sketch first. API and multiple-file work are extensions, not extra requirements.</div>`},
+      {dark:1,eye:"Student Build Sprint",time:"15 minutes",timer:900,body:`<h2>Build one clear data-driven sketch</h2><div class="cards"><div class="card"><h3>0–4 min · Load + inspect</h3><p>Choose CSV or JSON. Confirm it loads and log the data.</p></div><div class="card"><h3>4–10 min · Access + map</h3><p>Draw your marks and tune one meaningful visual mapping.</p></div><div class="card"><h3>10–15 min · Make or extend</h3><p>Edit your JSON, add interaction, or try API / multiple files after the core works.</p></div></div><div class="prompt"><strong>Done means:</strong> data loads, a field controls a visual or interactive property, and the sketch communicates something.</div>`},
       {eye:"Guess My Mapping · Closer",time:"2 minutes",timer:120,body:`<h2>Show the visual. Hide the code.</h2><div class="cards"><div class="card"><h3>Viewer</h3><p>Guess the data field.</p></div><div class="card"><h3>Viewer</h3><p>Guess the visual property.</p></div><div class="card"><h3>Maker</h3><p>Reveal the rule and what viewers should notice.</p></div></div><div class="prompt"><strong>Listen for:</strong> “I think ___ controls ___ because I notice ___.”</div>`},
       {dark:1,eye:"Exit Ticket",time:"2 minutes",exit:1,body:`<h2>Complete the data-to-visual chain</h2><div class="grid"><div class="response"><label for="fieldAnswer">1. My data field is…</label><input id="fieldAnswer" placeholder="context_window_k"><label for="visualAnswer">2. It controls…</label><input id="visualAnswer" placeholder="circle size"><label for="becauseAnswer">3. This is meaningful because…</label><input id="becauseAnswer" placeholder="viewers can compare context-window length"><button class="copy" id="copyExit" type="button">Copy my exit ticket</button><div id="copyStatus" aria-live="polite"></div></div><div><div class="prompt"><strong>One last habit:</strong><br>Before drawing, I will <strong>load → log → look</strong>.</div><p class="small">Then: access → map → draw → explain.</p></div></div>`},
-      {dark:1,eye:"Lab 7 · Recap",body:`<h1>Data controls the visual.</h1><div class="path"><span>source</span><i>→</i><span>inspect</span><i>→</i><span>field</span><i>→</i><span>property</span><i>→</i><span>meaning</span></div><p class="lead center">Make the code work—and make the mapping readable.</p><p class="center"><a class="download" href="assets/lab7/generative-ai-models.csv" download>Download the Generative AI model CSV</a></p>`}
+      {dark:1,eye:"Lab 7 · Recap",body:`<h1>Data controls the visual.</h1><div class="path"><span>source</span><i>→</i><span>inspect</span><i>→</i><span>field</span><i>→</i><span>property</span><i>→</i><span>meaning</span></div><p class="lead center">Make the code work—and make the mapping readable.</p><p class="center"><a class="download" href="assets/lab7/generative-ai-models.csv" download>Download the Generative AI model CSV</a><br><a class="download" href="assets/lab7/my-ai-use.json" download>Download the editable JSON example</a></p>`}
     ];
 
     function demoDoc(code){
@@ -187,14 +235,14 @@ console.log(models.getNum(0, "context_window_k"));</pre><div class="card"><h3>If
       paint();
     }
 
-    function setupDemo(){
+    function setupDemo(initialCode=apiDemoCode){
       const editor=document.querySelector('#codeEditor');
       const preview=document.querySelector('#preview');
       const output=document.querySelector('#demoConsole');
       const lineNumbers=document.querySelector('#lineNumbers');
       const autoRefresh=document.querySelector('#autoRefresh');
       let refreshId;
-      editor.value=apiDemoCode;
+      editor.value=initialCode;
       const updateLines=()=>{lineNumbers.textContent=editor.value.split('\n').map((_,index)=>index+1).join('\n')};
       const run=()=>{
         output.textContent='Running sketch…';
@@ -253,7 +301,7 @@ console.log(models.getNum(0, "context_window_k"));</pre><div class="card"><h3>If
       if(slide.quiz)setupQuiz();
       if(slide.reveal)setupReveals();
       if(slide.timer)setupTimer(slide.timer);
-      if(slide.demo)setupDemo();
+      if(slide.demo)setupDemo(slide.demoCode||apiDemoCode);
       if(slide.exit)setupExit();
     }
 

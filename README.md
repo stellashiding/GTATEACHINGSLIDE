@@ -14,7 +14,9 @@ Then open `http://localhost:8000/`. A local server is recommended because browse
 
 ## Lab 7: APIs, Data, and Visual Mapping
 
-`Lab7_APIs_Data_OneHour_Lesson.html` is a 50–55 minute lesson on loading, inspecting, accessing, and meaningfully mapping JSON or CSV data in p5.js. Its main activity uses the small classroom CSV at `assets/lab7/generative-ai-models.csv`, beginning with one model and progressing to repeated records and additional visual mappings.
+`Lab7_APIs_Data_OneHour_Lesson.html` is a one-hour lesson on loading, inspecting, accessing, and meaningfully mapping JSON or CSV data in p5.js. Its main activity uses the small classroom CSV at `assets/lab7/generative-ai-models.csv`, beginning with one model and progressing to repeated records and additional visual mappings.
+
+The core practice now moves from the supplied CSV to `assets/lab7/my-ai-use.json`, a tiny editable JSON example. Every student completes one working local-file sketch; students who finish early can customize the JSON, load a simple API, or load both files in one sketch.
 
 The CSV compares five familiar 2024 model families—Gemini 1.5 Pro, GPT-4o, Claude 3.5 Sonnet, Llama 3.1, and Qwen 2.5—using release month and the published maximum context window. The values come from the official [Google](https://ai.google.dev/gemini-api/docs/changelog), [OpenAI](https://developers.openai.com/api/docs/models/gpt-4o), [Anthropic](https://www.anthropic.com/news/claude-3-5-sonnet), [Meta](https://ai.meta.com/blog/meta-llama-3-1/), and [Qwen](https://qwenlm.github.io/blog/qwen2.5/) release materials. Availability and limits can vary by product or model version, so the file is a fixed classroom snapshot rather than a live comparison.
 

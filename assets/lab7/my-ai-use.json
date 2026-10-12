@@ -1,0 +1,8 @@
+{
+  "entries": [
+    {"tool": "ChatGPT", "task": "brainstorming", "minutes": 25},
+    {"tool": "Claude", "task": "reading notes", "minutes": 40},
+    {"tool": "Gemini", "task": "image ideas", "minutes": 15},
+    {"tool": "Qwen", "task": "coding practice", "minutes": 30}
+  ]
+}
